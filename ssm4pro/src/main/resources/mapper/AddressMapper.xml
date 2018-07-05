@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.Address">
+
+	<select id="findAllByQid" resultType="Address">
+		select * from address where qid = #{qid}
+	</select>
+	
+	<insert id="addAddress" useGeneratedKeys="true">
+		insert into address (qid) value (#{qid})
+	</insert>
+	
+	<update id="editAddress">
+		update address set
+			qid = #{qid}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteAddress">
+		delete from address where id = #{id}
+	</delete>
+</mapper>

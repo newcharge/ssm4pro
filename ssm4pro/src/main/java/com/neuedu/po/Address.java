@@ -2,7 +2,7 @@ package com.neuedu.po;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("Adress")
+@Alias("Address")
 public class Address {
 	
 private int id;
