@@ -11,6 +11,7 @@
 
 	<!-- 设置映射文件所在的位置 -->
 	<mappers>
-		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/UserMapper.xml"/>
+		<mapper resource="mapper/AddressMapper.xml"/>
 	</mappers>
 </configuration>  
