@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.neuedu.dao.UserDao;
 import com.neuedu.po.User;
-import com.neuedu.service.TestService;
+import com.neuedu.service.UserService;
 import com.neuedu.vo.VUser;
 
 @Service
-public class UserServiceImpl implements TestService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;

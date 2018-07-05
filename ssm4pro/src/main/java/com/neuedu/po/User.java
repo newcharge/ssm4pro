@@ -1,18 +1,27 @@
 package com.neuedu.po;
-
 import org.apache.ibatis.type.Alias;
 
 @Alias("User")
 public class User {
+
 	private String username;
 	private String userpassword;
 	private int qid;
 	private String jurisdiction;
 	private int id;
 	
-	@Override
 	public String toString() {
-		return username + "_" + userpassword+ "_" + qid + "_" + jurisdiction;
+		return  username  + "_" + userpassword + "_" +qid + "_" +jurisdiction+ "_" + id;
+	} 
+	
+	public boolean equals(User user) {
+		boolean flag = true;
+		if (!username.equals(user.username)) flag=false ;
+		if (!userpassword.equals(user.userpassword)) flag=false ;
+		if (qid != user.qid) flag= false;
+		if (!jurisdiction.equals(user.jurisdiction)) flag=false ;
+		if (id != user.id) flag= false;
+		return flag;
 	}
 	
 	public String getUsername() {
@@ -45,6 +54,7 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	
 	
 }

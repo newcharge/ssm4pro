@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neuedu.service.TestService;
+import com.neuedu.service.UserService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,7 +16,7 @@ import com.neuedu.service.TestService;
 public class UserServiceImplTest {
 	
 	@Autowired
-	TestService userService;
+	UserService userService;
 	
 	@Test
 	public void testFindAll() throws Exception {
