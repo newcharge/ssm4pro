@@ -10,6 +10,11 @@ public class VInputAddress
 	private double longtitude;
 	private double latitude;
 	
+	@Override
+	public String toString() {
+		return String.join("_", String.valueOf(id), String.valueOf(qid), branch, address, tel, String.valueOf(longtitude), String.valueOf(latitude));
+	}
+	
 	public int getId() {
 		return id;
 	}
