@@ -1,16 +1,15 @@
 package com.neuedu.vo;
 
-import java.util.Date;
-
 public class VInputFreelisten 
 {
 	private int id;
 	private int qid;
+	private int branchid;
 	private String title;
 	private String imgurl;
 	private String fdesc;
 	private String status;
-	private Date pubtime;
+	private String pubtime;
 	
 	public int getId() {
 		return id;
@@ -23,6 +22,12 @@ public class VInputFreelisten
 	}
 	public void setQid(int qid) {
 		this.qid = qid;
+	}
+	public int getBranchid() {
+		return branchid;
+	}
+	public void setBranchid(int branchid) {
+		this.branchid = branchid;
 	}
 	public String getTitle() {
 		return title;
@@ -48,10 +53,10 @@ public class VInputFreelisten
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getPubtime() {
+	public String getPubtime() {
 		return pubtime;
 	}
-	public void setPubtime(Date pubtime) {
+	public void setPubtime(String pubtime) {
 		this.pubtime = pubtime;
 	} 
 	

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.FreelistenDao">
+
+	<!-- 
+	public boolean addFreelisten(Freelisten freelisten) throws Exception;
+	public boolean editFreelisten(Freelisten freelisten) throws Exception;
+	public boolean deleteFreelisten(int id) throws Exception;
+	public List<Freelisten> showFreelisten(int qid) throws Exception;
+	public List<Freelisten> showFreelistenByBranchId(Freelisten freelisten) throws Exception;
+	 -->
+	
+	<insert id="addFreelisten" useGeneratedKeys="true" keyProperty="id">
+		insert into freelisten (title,imgurl,fdesc,status,qid,branchid,pubtime) value (#{title},#{imgurl},#{fdesc},#{status},#{qid},#{branchid},#{pubtime})
+	</insert>
+	
+	<update id="editFreelisten">
+		update freelisten set
+			title = #{title},imgurl = #{imgurl},fdesc = #{fdesc},status = #{title},qid = #{qid},branchid = #{branchid},pubtime = #{pubtime}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteFreelisten">
+		delete from freelisten where id = #{id}
+	</delete>
+	
+	<select id="showFreelisten">
+		select * from freelisten where qid = #{qid}
+	</select>
+	
+	<select id="showFreelistenByBranchId">
+		select * from freelisten
+		where qid = #{qid}
+		and branchid = #{branchid}
+	</select>
+</mapper>
