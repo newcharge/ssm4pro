@@ -3,8 +3,6 @@ package com.neuedu.dao;
 import java.util.List;
 
 import com.neuedu.po.Freelisten;
-import com.neuedu.vo.VInputFreelisten;
-import com.neuedu.vo.VOutputFreelisten;
 
 public interface FreelistenDao 
 {

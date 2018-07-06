@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.FreelistenDao;
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
-import com.neuedu.vo.VInputFreelisten;
-import com.neuedu.vo.VOutputFreelisten;
 
 @Service
 public class FreelistenServiceImpl implements FreelistenService {

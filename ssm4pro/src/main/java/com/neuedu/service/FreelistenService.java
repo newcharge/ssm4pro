@@ -3,7 +3,6 @@ package com.neuedu.service;
 import java.util.List;
 
 import com.neuedu.po.Freelisten;
-import com.neuedu.vo.VOutputFreelisten;
 
 public interface FreelistenService 
 {
