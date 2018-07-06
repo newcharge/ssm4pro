@@ -6,7 +6,7 @@ public class VOutputEnterprise
 {
 	private int qid;
 	private String name;
-	private List<VOutputSwiper> vos;
+	private List<String> imgurl;
 	private String videopath;
 	private String introduction;
 	private String jczs;
@@ -23,11 +23,11 @@ public class VOutputEnterprise
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<VOutputSwiper> getVos() {
-		return vos;
+	public List<String> getImgurl() {
+		return imgurl;
 	}
-	public void setVos(List<VOutputSwiper> vos) {
-		this.vos = vos;
+	public void setImgurl(List<String> imgurl) {
+		this.imgurl = imgurl;
 	}
 	public String getVideopath() {
 		return videopath;
@@ -48,5 +48,4 @@ public class VOutputEnterprise
 		this.jczs = jczs;
 	}
 	
-
 }
