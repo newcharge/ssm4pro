@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.UserDao;
 import com.neuedu.po.User;
 import com.neuedu.service.UserService;
+import com.neuedu.vo.VInputUser;
 import com.neuedu.vo.VUser;
 
 @Service
@@ -26,6 +27,12 @@ public class UserServiceImpl implements UserService {
 		List<VUser> list = Arrays.asList();
 		list = userDao.findAll().stream().map(ele -> toVUser(ele)).collect(Collectors.toList());
 		return list;
+	}
+
+	@Override
+	public boolean valid(VInputUser viu) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	private VUser toVUser(User user) {
