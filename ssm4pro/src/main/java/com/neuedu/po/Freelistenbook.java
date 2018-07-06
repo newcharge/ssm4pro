@@ -9,7 +9,7 @@ public class Freelistenbook {
 	private int fid;
 	private String username;
 	private String tel;
-	private String booktime;//数据库中datetime类型
+	private String booktime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	private String status;
 	private String comment;
 	private String openid;

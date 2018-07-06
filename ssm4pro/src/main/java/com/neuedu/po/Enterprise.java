@@ -9,7 +9,7 @@ public class Enterprise {
 	private String name;
 	private String videopath;
 	private String introduction;	
-	private String jczs; //数据库 text类型
+	private String jczs; //鏁版嵁搴撲腑鐨則ext绫诲瀷
 	
 	@Override
 	public String toString() {

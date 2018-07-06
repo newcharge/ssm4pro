@@ -9,10 +9,10 @@ public class Lesson {
 	private String lname;
 	private String imgurl;
 	private double lprice;
-	private String ldesc;//数据库中text类型
+	private String ldesc;//鏁版嵁搴撲腑鐨則ext绫诲瀷
 	private String category;
 	private int qid;
-	private String pubtime;//数据库中datetime类型
+	private String pubtime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	
 	@Override
 	public String toString() {

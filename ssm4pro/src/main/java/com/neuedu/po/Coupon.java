@@ -11,7 +11,7 @@ public class Coupon {
 	private int money;
 	private int total;
 	private int get;
-	private String deadline;//数据库date类型
+	private String deadline;//鏁版嵁搴撲腑鐨刣ate绫诲瀷
 	
 	@Override
 	public String toString() {

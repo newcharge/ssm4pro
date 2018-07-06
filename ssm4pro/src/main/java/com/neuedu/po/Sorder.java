@@ -12,7 +12,7 @@ public class Sorder {
 	private String cid;
 	private double actual;
 	private String status;
-	private String ordertime;//Êı¾İ¿âÖĞdatetime
+	private String ordertime;//æ•°æ®åº“ä¸­çš„datetimeç±»å‹
 	private int qid;
 	private String transactionid;
 	private String nickname;

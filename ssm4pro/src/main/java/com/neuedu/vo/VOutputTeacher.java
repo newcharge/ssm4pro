@@ -1,17 +1,16 @@
 package com.neuedu.vo;
 
 public class VOutputTeacher {
-	private int id;
+	private int tid;
 	private int qid;
-	private String name;
-	private String photo;
+	private String tname;
+	private String tphoto;
 	private String introduction;
-	
-	public int getId() {
-		return id;
+	public int getTid() {
+		return tid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 	public int getQid() {
 		return qid;
@@ -19,17 +18,17 @@ public class VOutputTeacher {
 	public void setQid(int qid) {
 		this.qid = qid;
 	}
-	public String getName() {
-		return name;
+	public String getTname() {
+		return tname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTname(String tname) {
+		this.tname = tname;
 	}
-	public String getPhoto() {
-		return photo;
+	public String getTphoto() {
+		return tphoto;
 	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setTphoto(String tphoto) {
+		this.tphoto = tphoto;
 	}
 	public String getIntroduction() {
 		return introduction;
@@ -37,4 +36,6 @@ public class VOutputTeacher {
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
+	
+	
 }

@@ -2,11 +2,10 @@ package com.neuedu.service;
 
 import java.util.List;
 
-import com.neuedu.vo.VInputUser;
-import com.neuedu.vo.VUser;
+import com.neuedu.po.User;
 
 public interface UserService 
 {
-	public boolean valid(VInputUser viu);
-	public List<VUser> findAll() throws Exception;
+	public boolean valid(User user) throws Exception ;
+	public List<User> findAll() throws Exception;
 }

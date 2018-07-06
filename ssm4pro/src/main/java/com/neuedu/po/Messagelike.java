@@ -8,7 +8,7 @@ public class Messagelike {
 	private int id;
 	private int mid;
 	private String nickname;
-	private String stime;//数据库类型datetime；
+	private String stime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	
 	public String toString() {
 		return id + "_" + mid + "_" + nickname + "_" + stime;

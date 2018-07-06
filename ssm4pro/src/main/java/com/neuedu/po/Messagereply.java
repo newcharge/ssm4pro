@@ -9,7 +9,7 @@ public class Messagereply {
 	private int mid;
 	private String content;
 	private String nickname;
-	private String stime;//数据库中类型为datetime
+	private String stime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	
 	public String toString() {
 		return id + "_" + mid + "_" + content + "_" + nickname + "_" + stime;

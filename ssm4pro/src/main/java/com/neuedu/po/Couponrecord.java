@@ -8,7 +8,7 @@ public class Couponrecord {
 	private int id;
 	private int cid;
 	private String openid;
-	private String gettime;//数据库中datetime类型
+	private String gettime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	
     public String toString() {
 		return id + "_" + cid + "_" + openid + "_" + gettime;

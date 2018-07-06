@@ -12,7 +12,7 @@ public class Freelisten {
 	private String status;
 	private int qid;
 	private int branchid;
-	private String pubtime;//数据库中datetime类型
+	private String pubtime;//鏁版嵁搴撲腑鐨刣atetime绫诲瀷
 	
 	@Override
 	public String toString() {
