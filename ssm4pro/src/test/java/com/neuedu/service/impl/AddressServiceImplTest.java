@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.neuedu.po.Address;
 import com.neuedu.service.AddressService;
-import com.neuedu.vo.VInputAddress;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml"})
@@ -20,9 +20,9 @@ public class AddressServiceImplTest {
 	
 	@Test
 	public void testAddAddress() throws Exception {
-		VInputAddress via = new VInputAddress();
-		via.setQid(1);
-		System.out.println(addressService.addAddress(via));
+		Address address = new Address();
+		address.setQid(1);
+		System.out.println(addressService.addAddress(address));
 	}
 
 	@Test
