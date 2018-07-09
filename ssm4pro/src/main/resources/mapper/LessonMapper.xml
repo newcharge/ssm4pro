@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.LessonDao">
+	<insert id="addLesson" useGeneratedKeys="true">
+		insert into lesson (lname, lprice, imgurl, ldesc, category, qid, pubtime)
+		values (#{lname}, #{lprice}, #{imgurl}, #{ldesc}, #{category}, #{qid}, now());
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			select last_insert_id();
+		</selectKey>
+	</insert>
+	
+	<update id="updateLesson">
+		update lesson set
+			lname = #{lname},
+			lprice = #{lprice},
+			imgurl = #{imgurl},
+			ldesc = #{ldesc},
+			category = #{category}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteLesson">
+		delete from lesson
+		where id = #{id}
+	</delete>
+	
+	<select id="findAllByQid" resultType="Lesson">
+		select *
+		from lesson
+		where qid = #{qid}
+	</select>
+	
+	<select id="findAllByEle" resultType="Lesson">
+		select *
+		from lesson
+		where qid = #{qid}
+		and category = #{category}
+	</select>
+</mapper>
