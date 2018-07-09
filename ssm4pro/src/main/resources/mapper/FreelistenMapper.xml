@@ -18,7 +18,7 @@
 	
 	<update id="editFreelisten">
 		update freelisten set
-			title = #{title},imgurl = #{imgurl},fdesc = #{fdesc},status = #{title},qid = #{qid},branchid = #{branchid},pubtime = #{pubtime}
+			title = #{title},imgurl = #{imgurl},fdesc = #{fdesc},status = #{status},qid = #{qid},branchid = #{branchid},pubtime = #{pubtime}
 		where id = #{id}
 	</update>
 	
@@ -26,11 +26,11 @@
 		delete from freelisten where id = #{id}
 	</delete>
 	
-	<select id="showFreelisten">
+	<select id="showFreelisten" resultType="Freelisten">
 		select * from freelisten where qid = #{qid}
 	</select>
 	
-	<select id="showFreelistenByBranchId">
+	<select id="showFreelistenByBranchId" resultType="Freelisten">
 		select * from freelisten
 		where qid = #{qid}
 		and branchid = #{branchid}
