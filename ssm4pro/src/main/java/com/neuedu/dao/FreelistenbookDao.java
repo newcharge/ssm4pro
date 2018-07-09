@@ -1,12 +1,11 @@
-
-package com.neuedu.service;
+package com.neuedu.dao;
 
 import java.util.List;
 
 import com.neuedu.po.Freelistenbook;
 import com.neuedu.vo.VInputFreelistenbook;
 
-public interface FreelistenbookService 
+public interface FreelistenbookDao 
 {
 	//添加预约
 	public boolean addFreelistenbook(Freelistenbook freelistenbook) throws Exception;
