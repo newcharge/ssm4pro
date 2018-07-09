@@ -6,6 +6,8 @@ public class VInputFreelistenbook
 	private String username;
 	private String tel;
 	private String booktime;
+	private String starttime;
+	private String endtime;
 	private String status;
 	private String comment;
 	
@@ -32,6 +34,18 @@ public class VInputFreelistenbook
 	}
 	public void setBooktime(String booktime) {
 		this.booktime = booktime;
+	}
+	public String getStarttime() {
+		return starttime;
+	}
+	public void setStarttime(String starttime) {
+		this.starttime = starttime;
+	}
+	public String getEndtime() {
+		return endtime;
+	}
+	public void setEndtime(String endtime) {
+		this.endtime = endtime;
 	}
 	public String getStatus() {
 		return status;
