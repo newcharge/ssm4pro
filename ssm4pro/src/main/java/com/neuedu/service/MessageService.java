@@ -2,22 +2,22 @@ package com.neuedu.service;
 
 import java.util.List;
 
-import com.neuedu.vo.VInputLike;
+import com.neuedu.po.Messagelike;
+import com.neuedu.po.Messagereply;
 import com.neuedu.vo.VInputMessage;
-import com.neuedu.vo.VInputReply;
 import com.neuedu.vo.VOutputMessage;
 
 public interface MessageService 
 {
-	public boolean addMessage(VInputMessage vim);
-	public boolean addReply(VInputReply vir);
-	public boolean addLike(VInputLike vil);
+	public boolean addMessage(VInputMessage vimessage) throws Exception;
+	public boolean addReply(Messagereply reply) throws Exception;
+	public boolean addLike(Messagelike like) throws Exception;
 	
-	public boolean deleteMessage(VInputMessage vim);
-	public boolean deleteReply(VInputReply vir);
+	public boolean deleteMessage(int id) throws Exception;
+	public boolean deleteReply(int id) throws Exception;
 	
-	public boolean editMessage(VInputMessage vim);
+	public boolean editMessage(VInputMessage vimessage) throws Exception;
 	
-	public List<VOutputMessage> showMessage(int qid);
+	public List<VOutputMessage> showMessageByQid(int qid) throws Exception;
 	
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.MessagereplyDao">
+	<insert id="addReply" useGeneratedKeys="true">
+		insert into messagereply (id, mid, content, nickname, stime)
+		values (#{id}, #{mid}, #{content}, #{nickname}, now())
+	</insert>
+
+	<delete id="deleteReply">
+		delete from messagereply where id = #{id}
+	</delete>
+	
+	<select id="findAllByMid" resultType="Messagereply">
+		select *
+		from messagereply
+		where mid = #{mid}
+	</select>
+</mapper>
