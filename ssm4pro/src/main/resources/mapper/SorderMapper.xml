@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.SorderDao">
+ 
+   <insert id="addSorder" useGeneratedKeys="true" keyProperty="oid">
+   insert into sorder (lid,openid,total,cid,actual,status,ordertime,qid,transactionid,nickname,tel	)
+   values(#{lid},#{openid},#{total},#{cid},#{actual},#{status},#{ordertime},#{qid},#{transactionid},#{nickname},#{tel})
+   </insert>
+   
+   <update id="changeSorderState">
+   update sorder set
+     lid = #{lid},
+     openid = #{openid},
+     total = #{total},
+     cid = #{cid},
+     status = #{status},
+     ordertime = #{ordertime},
+     qid = #{qid},
+     transactionid = #{transactionid},
+     nickname = #{nickname},
+     tel = #{tel},
+   where oid = #{oid}
+   </update>
+   
+   <select id="showSorder">
+   select *
+   from sorder
+   where oid=#{oid}
+   </select>
+   
+   <select id="showSorderByOthers" resultType="Sorder">
+   select *
+   from sorder
+   where state = 'ACTIVE'
+   <if test="oid != null">
+       and oid = #{oid}
+   </if>
+   <if test="status != null">
+       and status = #{status}
+   </if>
+   <if test="(startTime != null) and (endTime != null)">
+       and ordertime > str_to_date((#startTime),'%Y-%m-%d %h:%i:%s')
+       and ordertime &lt; str_to_date((#endTime),'%Y-%m-%d %h:%i:%s')
+   </if>
+   </select>
+   
+   
+</mapper>

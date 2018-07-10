@@ -5,5 +5,5 @@ import java.util.List;
 import com.neuedu.po.Swiper;
 
 public interface SwiperDao {
-	public List<String> findAllByEle(Swiper swiper);
+	public List<String> findAllByCategory(Swiper swiper);
 }
