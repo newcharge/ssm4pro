@@ -23,10 +23,10 @@
        where tid = #{tid}
     </update>
     
-    <select id="showTeacher">
-       select tname, tphoto, introduction
+    <select id="showTeacher" resultType="teacher">
+       select *
        from teacher
-       where qid =　#{qid}
-     </select>
+       where qid = #{qid}
+    </select>
 
 </mapper>
