@@ -8,16 +8,21 @@
 		values (#{lid}, #{branchid});
 	</insert>
 	
+	<!-- 好吧是多对多... -->
 	<update id="update">
 		update lessonbranch set
-			lid = #{lid},
 			branchid = #{branchid}
-		where id = #{id}
+		where lid = #{lid}
 	</update>
 	
 	<delete id="deleteLesson">
 		delete from lessonbranch
 		where id = #{id}
+	</delete>
+	
+	<delete id="deleteBranchesByLid">
+		delete from lessonbranch
+		where lid = #{lid}
 	</delete>
 	
 	<select id="findById" resultType="Lessonbranch">
@@ -26,8 +31,8 @@
 		where id = #{id}
 	</select>
 	
-	<select id="findByLid" resultType="Lessonbranch">
-		select *
+	<select id="findBranchidByLid" resultType="Integer">
+		select branchid
 		from lessonbranch
 		where lid = #{lid}
 	</select>

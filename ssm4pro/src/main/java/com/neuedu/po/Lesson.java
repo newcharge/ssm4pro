@@ -5,7 +5,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("Lesson")
 public class Lesson {
 
-	private int id;
+	private int lid;
 	private String lname;
 	private String imgurl;
 	private double lprice;
@@ -16,12 +16,12 @@ public class Lesson {
 	
 	@Override
 	public String toString() {
-		return id + "_" + lname + "_" + imgurl + "_" + lprice + "_" + ldesc + "_" + category +  "_" + qid + "_" + pubtime;
+		return lid + "_" + lname + "_" + imgurl + "_" + lprice + "_" + ldesc + "_" + category +  "_" + qid + "_" + pubtime;
 	}
 	
 	public boolean equals(Lesson lesson) {
 		boolean flag = true;
-		if(id != lesson.id) flag = false;
+		if(lid != lesson.lid) flag = false;
 		if(!lname.equals(lesson.lname)) flag = false;
 		if(!imgurl.equals(lesson.imgurl)) flag = false;
 		if(lprice != lesson.lprice) flag = false;
@@ -31,11 +31,11 @@ public class Lesson {
 		if(!pubtime.equals(lesson.pubtime)) flag = false;
 		return flag;
 	}
-	public int getId() {
-		return id;
+	public int getLid() {
+		return lid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setLid(int lid) {
+		this.lid = lid;
 	}
 	public String getLname() {
 		return lname;
@@ -79,6 +79,4 @@ public class Lesson {
 	public void setPubtime(String pubtime) {
 		this.pubtime = pubtime;
 	}
-	
-	
 }

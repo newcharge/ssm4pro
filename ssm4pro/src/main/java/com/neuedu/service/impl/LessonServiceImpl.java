@@ -12,6 +12,7 @@ import com.neuedu.po.Lesson;
 import com.neuedu.po.Lessonbranch;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
+import com.neuedu.vo.VOutputLesson;
 
 @Service
 public class LessonServiceImpl implements LessonService {
@@ -22,19 +23,21 @@ public class LessonServiceImpl implements LessonService {
 	@Autowired
 	LessonbranchDao lessonbranchDao;
 
-	
 	@Transactional
 	@Override
 	public boolean addLesson(VInputLesson vil) throws Exception {
 		// TODO Auto-generated method stub
 		Lesson lesson = vil.getLesson();
-		Lessonbranch lessonbranch = new Lessonbranch();
-		lessonbranch.setBranchid(vil.getBranchId());
-		if(lessonDao.addLesson(lesson)) {
-			lessonbranch.setLid(lesson.getId());
-			if(lessonbranchDao.insert(lessonbranch)) {
-				return true;
+		List<Integer> branches = vil.getBranches();
+		if (lessonDao.addLesson(lesson)) {
+			lessonbranchDao.deleteBranchesByLid(lesson.getLid());
+			for (Integer branchid : branches) {
+				Lessonbranch lessonbranch = new Lessonbranch();
+				lessonbranch.setBranchid(branchid);
+				lessonbranch.setLid(lesson.getLid());
+				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
+			return true;
 		}
 		return false;
 	}
@@ -43,8 +46,13 @@ public class LessonServiceImpl implements LessonService {
 	@Override
 	public boolean deleteLesson(int id) throws Exception {
 		// TODO Auto-generated method stub
-		//记得补上完整性约束(R/N)
-		return lessonDao.deleteLesson(id);
+		// 记得补上完整性约束(R/N)，暂时(D)
+		if(lessonDao.deleteLesson(id)) {
+			if(lessonbranchDao.deleteBranchesByLid(id)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Transactional
@@ -52,13 +60,16 @@ public class LessonServiceImpl implements LessonService {
 	public boolean editLesson(VInputLesson vil) throws Exception {
 		// TODO Auto-generated method stub
 		Lesson lesson = vil.getLesson();
-		Lessonbranch lessonbranch = new Lessonbranch();
-		lessonbranch.setBranchid(vil.getBranchId());
-		lessonbranch.setId(lesson.getId());
-		if(lessonDao.updateLesson(lesson)) {
-			if(lessonbranchDao.update(lessonbranch)) {
-				return true;
+		List<Integer> branches = vil.getBranches();
+		if (lessonDao.updateLesson(lesson)) {
+			lessonbranchDao.deleteBranchesByLid(lesson.getLid());
+			for (Integer branchid : branches) {
+				Lessonbranch lessonbranch = new Lessonbranch();
+				lessonbranch.setBranchid(branchid);
+				lessonbranch.setLid(lesson.getLid());
+				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
+			return true;
 		}
 		return false;
 	}
@@ -72,10 +83,15 @@ public class LessonServiceImpl implements LessonService {
 
 	@Transactional
 	@Override
-	public List<Lesson> showLessonByBranchId(VInputLesson vil) throws Exception {
+	public List<Lesson> showLessonByBranchId(int branchid) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
-		//待实现
+		return lessonDao.findAllByBranchid(branchid);
 	}
 
+	@Transactional
+	@Override
+	public VOutputLesson getLessonById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return lessonDao.findById(id);
+	}
 }

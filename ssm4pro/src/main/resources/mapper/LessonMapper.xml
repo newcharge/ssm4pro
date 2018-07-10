@@ -3,10 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.dao.LessonDao">
+	
+	<resultMap type="VOutputLesson" id="lessonView">
+		<id property="lid" column="lid" />
+		<collection property="branches" column="lid" ofType="Lessonbranch"
+			select="com.neuedu.dao.LessonbranchDao.findBranchidByLid" />
+	</resultMap>
+	
 	<insert id="addLesson" useGeneratedKeys="true">
 		insert into lesson (lname, lprice, imgurl, ldesc, category, qid, pubtime)
 		values (#{lname}, #{lprice}, #{imgurl}, #{ldesc}, #{category}, #{qid}, now());
-		<selectKey keyProperty="id" resultType="int" order="AFTER">
+		<selectKey keyProperty="lid" resultType="int" order="AFTER">
 			select last_insert_id();
 		</selectKey>
 	</insert>
@@ -18,12 +25,12 @@
 			imgurl = #{imgurl},
 			ldesc = #{ldesc},
 			category = #{category}
-		where id = #{id}
+		where lid = #{lid}
 	</update>
 	
 	<delete id="deleteLesson">
 		delete from lesson
-		where id = #{id}
+		where lid = #{lid}
 	</delete>
 	
 	<select id="findAllByQid" resultType="Lesson">
@@ -32,10 +39,19 @@
 		where qid = #{qid}
 	</select>
 	
-	<select id="findAllByEle" resultType="Lesson">
+	<select id="findAllByBranchid" resultType="Lesson">
 		select *
 		from lesson
-		where qid = #{qid}
-		and category = #{category}
+		where lid in(
+			select lid
+			from lessonbranch
+			where branchid = 1
+		)
+	</select>
+	
+	<select id="findById" resultMap="lessonView">
+		select *
+		from lesson
+		where lid = #{lid}
 	</select>
 </mapper>
