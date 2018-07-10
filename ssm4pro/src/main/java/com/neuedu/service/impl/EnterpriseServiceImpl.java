@@ -33,7 +33,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		swiper.setCategory("A");//目前只用A，应该是别的字母常量？
 		
 		Enterprise enterprise = enterpriseDao.findByQid(qid);
-		List<String> imgList = swiperDao.findAllByEle(swiper);
+		List<String> imgList = swiperDao.findAllByCategory(swiper);
 		
 		voenterprise.setEnterprise(enterprise);
 		voenterprise.setImgurl(imgList);

@@ -20,7 +20,7 @@ public class SwiperServiceImpl implements SwiperService {
 	@Override
 	public List<String> showSwiperByCategory(Swiper swiper) {
 		// TODO Auto-generated method stub
-		return swiperDao.findAllByEle(swiper);
+		return swiperDao.findAllByCategory(swiper);
 	}
 
 }

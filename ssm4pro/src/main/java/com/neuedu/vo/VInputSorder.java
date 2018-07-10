@@ -7,12 +7,13 @@ public class VInputSorder
 	private int cid;
 	private double actual;
 	private String status;
+	private String startTime;
+	private String endTime;
 	private String orderTime;
 	private int qid;
 	private String transactionId;
 	private String nickname;
 	private String tel;
-	
 	public int getLid() {
 		return lid;
 	}
@@ -42,6 +43,18 @@ public class VInputSorder
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 	public String getOrderTime() {
 		return orderTime;
@@ -73,4 +86,6 @@ public class VInputSorder
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	
+	
 }
