@@ -2,7 +2,9 @@ package com.neuedu.vo;
 
 public class VInputFreelistenbook 
 {
+	private Integer id;
 	private int fid;
+	private int qid;
 	private String username;
 	private String tel;
 	private String booktime;
@@ -11,11 +13,23 @@ public class VInputFreelistenbook
 	private String status;
 	private String comment;
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public int getFid() {
 		return fid;
 	}
 	public void setFid(int fid) {
 		this.fid = fid;
+	}
+	public int getQid() {
+		return qid;
+	}
+	public void setQid(int qid) {
+		this.qid = qid;
 	}
 	public String getUsername() {
 		return username;
