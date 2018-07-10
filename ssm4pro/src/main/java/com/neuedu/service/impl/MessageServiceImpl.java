@@ -36,7 +36,7 @@ public class MessageServiceImpl implements MessageService {
 	/*
 	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#addMessage(com.neuedu.po.Message)
-	 * 这里可能要重写:添加朋友圈包括对图片的添加，因此有级联操作，应该会需要InputVO
+	 * 目前已经修改完成了
 	 */
 	@Transactional
 	@Override
@@ -91,13 +91,25 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteReply(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return messagereplyDao.delete(id);
+		return messagereplyDao.deleteReplyById(id);
 	}
 
 	/*
 	 * (non-Javadoc)
+	 * @see com.neuedu.service.MessageService#deleteLike(int)
+	 * 暂未实现:删除添加的点赞应该不是用id作为参考的...?
+	 */
+	@Transactional
+	@Override
+	public boolean deleteLike(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	/*
+	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#editMessage(com.neuedu.po.Message)
-	 * 这里可能要重写:编辑朋友圈包括对图片的更改，因此有级联操作，应该会需要InputVO
+	 * 目前已经修改完成了
 	 */
 	@Transactional
 	@Override
@@ -105,14 +117,14 @@ public class MessageServiceImpl implements MessageService {
 		// TODO Auto-generated method stub
 		Message message = vimessage.getMessage();
 		List<Messageimg> imgList = vimessage.getImgList();
+		imgList.forEach(img -> img.setMid(message.getMid()));
 		if(messageDao.editMessage(message)) {
-			if(messageimgDao.deleteImgByMid(message.getMid())) {
-				boolean flag = true;
-				for(Messageimg img : imgList) {
-					messageimgDao.addImg(img);
-				}
-				if(flag) return true;
+			boolean flag = true;
+			messageimgDao.deleteImgByMid(message.getMid());
+			for(Messageimg img : imgList) {
+				messageimgDao.addImg(img);
 			}
+			if(flag) return true;
 		}
 		return false;
 	}
@@ -123,5 +135,4 @@ public class MessageServiceImpl implements MessageService {
 		// TODO Auto-generated method stub
 		return messageDao.findAllByQid(qid);
 	}
-
 }

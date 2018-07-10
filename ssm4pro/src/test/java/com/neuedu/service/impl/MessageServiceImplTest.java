@@ -1,7 +1,6 @@
 package com.neuedu.service.impl;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.List;
@@ -57,6 +56,7 @@ public class MessageServiceImplTest {
 		assertTrue(messageService.addReply(reply));
 	}
 
+	@Ignore
 	@Test
 	public void testAddLike() throws Exception {
 		Messagelike like = new Messagelike();
@@ -66,20 +66,36 @@ public class MessageServiceImplTest {
 	}
 
 	@Test
-	public void testDeleteMessage() {
-		fail("Not yet implemented");
+	public void testDeleteMessage() throws Exception {
+		assertTrue(messageService.deleteMessage(3));
 	}
 
+	@Ignore
 	@Test
-	public void testDeleteReply() {
-		fail("Not yet implemented");
+	public void testDeleteReply() throws Exception {
+		assertTrue(messageService.deleteReply(4));
 	}
 
+	@Ignore
 	@Test
-	public void testEditMessage() {
-		fail("Not yet implemented");
+	public void testEditMessage() throws Exception {
+		VInputMessage vimessage = new VInputMessage();
+		Message message = new Message();
+		Messageimg img_1 = new Messageimg();
+		img_1.setImgurl("test1-png");
+		Messageimg img_2 = new Messageimg();
+		img_2.setImgurl("test2-png");
+		List<Messageimg> imgList = Arrays.asList(img_1, img_2);
+		message.setMid(3);
+		message.setMtitle("test-another-title");
+		vimessage.setMessage(message);
+		
+		imgList.forEach(System.out::println);
+		vimessage.setImgList(imgList);
+		messageService.editMessage(vimessage);
 	}
 
+	@Ignore
 	@Test
 	public void testShowMessageByQid() throws Exception {
 		List<VOutputMessage> messageList = messageService.showMessageByQid(1);

@@ -12,6 +12,10 @@
 		delete from messagelike where id = #{id}
 	</delete>
 	
+	<delete id="deleteLikeByMid">
+		delete from messagelike where mid = #{mid}
+	</delete>
+	
 	<select id="findAllByMid" resultType="Messagelike">
 		select *
 		from messagelike

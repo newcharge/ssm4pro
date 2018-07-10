@@ -12,6 +12,10 @@
 		delete from messageimg where id = #{id}
 	</delete>
 	
+	<delete id="deleteImgByMid">
+		delete from messageimg where mid = #{mid}
+	</delete>
+	
 	<select id="findAllByMid" resultType="Messageimg">
 		select *
 		from messageimg

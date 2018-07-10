@@ -8,8 +8,12 @@
 		values (#{id}, #{mid}, #{content}, #{nickname}, now())
 	</insert>
 
-	<delete id="deleteReply">
+	<delete id="deleteReplyById">
 		delete from messagereply where id = #{id}
+	</delete>
+	
+	<delete id="deleteReplyByMid">
+		delete from messagereply where mid = #{mid}
 	</delete>
 	
 	<select id="findAllByMid" resultType="Messagereply">

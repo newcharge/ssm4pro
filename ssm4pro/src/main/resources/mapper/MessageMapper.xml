@@ -12,13 +12,6 @@
 			select="com.neuedu.dao.MessagereplyDao.findAllByMid" />
 	</resultMap>
 
-	<select id="findAllByQid" resultMap="messageView">
-		select *
-		from message
-		where
-		qid = #{qid}
-	</select>
-	
 	<insert id="addMessage" useGeneratedKeys="true">
 		insert into message (mtitle, mtime, qid)
 		values (#{mtitle}, now(), #{qid})
@@ -30,4 +23,17 @@
 	<delete id="deleteMessage">
 		delete from message where mid = #{mid}
 	</delete>
+	
+	<update id="editMessage">
+		update message set
+			mtitle = #{mtitle}
+		where mid = #{mid}
+	</update>
+	
+	<select id="findAllByQid" resultMap="messageView">
+		select *
+		from message
+		where
+		qid = #{qid}
+	</select>
 </mapper>
