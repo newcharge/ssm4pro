@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.MessageimgDao">
+	<insert id="addImg" useGeneratedKeys="true">
+		insert into messageimg (id, mid, imgurl)
+		values (#{id}, #{mid}, #{imgurl})
+	</insert>
+	
+	<delete id="deleteImg">
+		delete from messageimg where id = #{id}
+	</delete>
+	
+	<delete id="deleteImgByMid">
+		delete from messageimg where mid = #{mid}
+	</delete>
+	
+	<select id="findAllByMid" resultType="Messageimg">
+		select *
+		from messageimg
+		where mid = #{mid}
+	</select>
+</mapper>

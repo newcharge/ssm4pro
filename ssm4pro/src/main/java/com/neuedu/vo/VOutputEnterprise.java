@@ -2,50 +2,29 @@ package com.neuedu.vo;
 
 import java.util.List;
 
+import com.neuedu.po.Enterprise;
+
 public class VOutputEnterprise 
 {
-	private int qid;
-	private String name;
+	private Enterprise enterprise;
 	private List<String> imgurl;
-	private String videopath;
-	private String introduction;
-	private String jczs;
 	
-	public int getQid() {
-		return qid;
+	@Override
+	public String toString() {
+		return String.join("_", enterprise.toString(), String.join(",", imgurl));
 	}
-	public void setQid(int qid) {
-		this.qid = qid;
+	
+	public Enterprise getEnterprise() {
+		return enterprise;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
 	}
 	public List<String> getImgurl() {
 		return imgurl;
 	}
 	public void setImgurl(List<String> imgurl) {
 		this.imgurl = imgurl;
-	}
-	public String getVideopath() {
-		return videopath;
-	}
-	public void setVideopath(String videopath) {
-		this.videopath = videopath;
-	}
-	public String getIntroduction() {
-		return introduction;
-	}
-	public void setIntroduction(String introduction) {
-		this.introduction = introduction;
-	}
-	public String getJczs() {
-		return jczs;
-	}
-	public void setJczs(String jczs) {
-		this.jczs = jczs;
 	}
 	
 }

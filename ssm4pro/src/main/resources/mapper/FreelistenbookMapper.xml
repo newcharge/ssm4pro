@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.FreelistenDao">
+
+	<!-- 
+	public boolean addFreelistenbook(Freelistenbook freelistenbook) throws Exception;
+	
+	public boolean changeFreelistenbookState(Freelistenbook freelistenbook) throws Exception;
+	
+	public List<Freelistenbook> showFreelistenbook(int qid) throws Exception;
+	public Freelistenbook showFreelistenbookById(int id) throws Exception;
+	public List<Freelistenbook> showFreelistenbookByState(Freelistenbook freelistenbook) throws Exception;
+	public List<Freelistenbook> showFreelistenbookByPubtime(VInputFreelistenbook freelistenbook) throws Exception;
+	-->
+	
+	<insert id="addFreelistenbook" useGeneratedKeys="true" keyProperty="id">
+		insert into freelistenbook (fid,username,tel,booktime,status,comment) value (#{fid},#{username},#{tel},#{booktime},#{status},#{comment})
+	</insert>
+	
+	<update id="changeFreelistenbookState">
+		update freelisten set
+			status = #{title}
+		where id = #{id}
+	</update>
+	
+	<select id="showFreelistenbook">
+		select * from freelistenbook 
+		where qid = #{qid}
+	</select>
+	
+	<select id="findActiveBlogWithTitleLike" resultType="Blog">
+		select * from freelistenbook
+		where qid = #{qid}
+		<if test="id != null">
+	    	and id = #{id}
+		</if>
+		<if test="status != null">
+	    	and status = #{status}
+		</if>
+		<if test="(starttime != null) and (endtime != null)">
+	    	and booktime > str_to_date(#{starttime}, ‘%Y-%m-%d %h:%i:%s’)
+	    	and booktime < str_to_date(#{endtime}, ‘%Y-%m-%d %h:%i:%s’)
+		</if>
+
+	</select>
+
+</mapper>

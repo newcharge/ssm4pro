@@ -2,14 +2,13 @@ package com.neuedu.service;
 
 import java.util.List;
 
+import com.neuedu.po.Lesson;
 import com.neuedu.vo.VInputLesson;
-import com.neuedu.vo.VOutputLesson;
 
-public interface LessonService 
-{
-	public boolean addLesson(VInputLesson vil);
-	public boolean deleteLesson(VInputLesson vil);
-	public boolean editLesson(VInputLesson vil);
-	public List<VOutputLesson> showLesson(int qid);
-	public List<VOutputLesson> showLessonByBranchId(VInputLesson vil);//∂‡±Ì≤È—Ø
+public interface LessonService {
+	public boolean addLesson(VInputLesson vil) throws Exception;
+	public boolean deleteLesson(int id) throws Exception;
+	public boolean editLesson(VInputLesson vil) throws Exception;
+	public List<Lesson> showLesson(int qid) throws Exception;
+	public List<Lesson> showLessonByBranchId(VInputLesson vil) throws Exception;//‰πãÂâçÁöÑÊ≥®ÈáäÊòØ‰π±Á†Å
 }

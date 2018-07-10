@@ -33,7 +33,7 @@ public class FreelistenServiceImpl implements FreelistenService {
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		
-		flag = freelistenDao.addFreelisten(freelisten);
+		flag = freelistenDao.editFreelisten(freelisten);
 		
 		return flag;
 	}

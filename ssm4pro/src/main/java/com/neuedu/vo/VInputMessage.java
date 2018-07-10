@@ -1,44 +1,26 @@
 package com.neuedu.vo;
 
+import java.util.List;
+
+import com.neuedu.po.Message;
+import com.neuedu.po.Messageimg;
+
 public class VInputMessage 
 {
-	private int mid;
-	private int qid;
-	private String mtitle;
-	private String mtime;
-	private VInputImg vip;
+	private Message message;
+	private List<Messageimg> imgList;
 	
-	public int getMid() {
-		return mid;
+	public Message getMessage() {
+		return message;
 	}
-	public void setMid(int mid) {
-		this.mid = mid;
+	public void setMessage(Message message) {
+		this.message = message;
 	}
-	public int getQid() {
-		return qid;
+	public List<Messageimg> getImgList() {
+		return imgList;
 	}
-	public void setQid(int qid) {
-		this.qid = qid;
+	public void setImgList(List<Messageimg> imgList) {
+		this.imgList = imgList;
 	}
-	public String getMtitle() {
-		return mtitle;
-	}
-	public void setMtitle(String mtitle) {
-		this.mtitle = mtitle;
-	}
-	public String getMtime() {
-		return mtime;
-	}
-	public void setMtime(String mtime) {
-		this.mtime = mtime;
-	}
-	public VInputImg getVip() {
-		return vip;
-	}
-	public void setVip(VInputImg vip) {
-		this.vip = vip;
-	}
-	
-	
 	
 }

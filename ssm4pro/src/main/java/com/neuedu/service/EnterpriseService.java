@@ -4,6 +4,6 @@ import com.neuedu.vo.VOutputEnterprise;
 
 public interface EnterpriseService 
 {
-	public VOutputEnterprise showEnterprise(int qid);
+	public VOutputEnterprise showEnterprise(int qid) throws Exception;
 
 }
