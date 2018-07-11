@@ -24,6 +24,6 @@
 	</update>
 	
 	<delete id="deleteAddress">
-		delete from address where qid = #{qid}
+		delete from address where id = #{id}
 	</delete>
 </mapper>
