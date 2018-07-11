@@ -75,16 +75,11 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteMessage(int id) throws Exception {
 		// TODO Auto-generated method stub
-		if(messageimgDao.deleteImgByMid(id)) {
-			if(messagelikeDao.deleteLikeByMid(id)) {
-				if(messagereplyDao.deleteReplyByMid(id)) {
-					if(messageDao.deleteMessage(id)) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
+		// Message默认级联操作(D)
+		messageimgDao.deleteImgByMid(id);
+		messagelikeDao.deleteLikeByMid(id);
+		messagereplyDao.deleteReplyByMid(id);
+		return messageDao.deleteMessage(id);
 	}
 
 	@Transactional
