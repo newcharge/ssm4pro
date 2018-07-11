@@ -18,7 +18,7 @@ public class UserHandler {
 
 	@RequestMapping(value = "usr/showAll.action")
 	@ResponseBody
-	public List<User> showAll() throws Exception {
-		return userService.findAll();
+	public boolean valid(User user) throws Exception {
+		return userService.valid(user);
 	}
 }

@@ -1,13 +1,12 @@
 package com.neuedu.service.impl;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.neuedu.po.User;
 import com.neuedu.service.UserService;
 
 
@@ -19,9 +18,13 @@ public class UserServiceImplTest {
 	UserService userService;
 	
 	@Test
-	public void testFindAll() throws Exception {
-		userService.findAll().forEach(System.out::println);
-		assertTrue(true);
+	public void valid() throws Exception {
+		User user = new User();
+		user.setUsername("feiyy");
+		user.setUserpassword("123456");
+		System.out.println(user);
+		System.out.println(userService.valid(user));
+		
 	}
 
 }

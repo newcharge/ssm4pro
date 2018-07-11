@@ -1,10 +1,7 @@
 package com.neuedu.dao;
 
-import java.util.List;
-
 import com.neuedu.po.User;
 
 public interface UserDao {
-	public List<User> findAll() throws Exception;
-	public boolean valid() throws Exception;
+	public User valid(User user) throws Exception;
 }
