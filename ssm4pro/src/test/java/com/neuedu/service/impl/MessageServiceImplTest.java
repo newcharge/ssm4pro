@@ -65,6 +65,7 @@ public class MessageServiceImplTest {
 		assertTrue(messageService.addLike(like));
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteMessage() throws Exception {
 		assertTrue(messageService.deleteMessage(3));
@@ -95,7 +96,6 @@ public class MessageServiceImplTest {
 		messageService.editMessage(vimessage);
 	}
 
-	@Ignore
 	@Test
 	public void testShowMessageByQid() throws Exception {
 		List<VOutputMessage> messageList = messageService.showMessageByQid(1);
