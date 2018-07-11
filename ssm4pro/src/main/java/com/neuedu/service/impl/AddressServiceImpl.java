@@ -36,7 +36,7 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public List<Address> showAddress(int qid) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return addressDao.showAddress(qid);
 	}
 
 }

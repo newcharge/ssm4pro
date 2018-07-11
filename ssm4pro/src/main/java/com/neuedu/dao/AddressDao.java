@@ -8,5 +8,5 @@ public interface AddressDao {
 	public boolean addAddress(Address address) throws Exception;
 	public boolean deleteAddress(int id) throws Exception;
 	public boolean editAddress(Address address) throws Exception;
-	public List<Address> findAllByQid(int qid) throws Exception;
+	public List<Address> showAddress(int qid) throws Exception;
 }

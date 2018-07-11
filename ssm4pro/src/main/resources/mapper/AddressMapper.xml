@@ -4,21 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.dao.AddressDao">
 
-	<select id="findAllByQid" resultType="Address">
+	<select id="showAddress" resultType="Address">
 		select * from address where qid = #{qid}
 	</select>
 	
-	<insert id="addAddress" useGeneratedKeys="true">
-		insert into address (qid) value (#{qid})
+	<insert id="addAddress" useGeneratedKeys="true" keyProperty="id">
+		insert into address (qid,branch,address,tel,longitude,latitude) value (#{qid},#{branch},#{address},#{tel},#{longitude},#{latitude})
 	</insert>
 	
 	<update id="editAddress">
 		update address set
-			qid = #{qid}
+			branch = #{branch},
+			address = #{address},
+			tel = #{tel},
+			longitude = #{longitude},
+			latitude = #{latitude}
 		where id = #{id}
+
 	</update>
 	
 	<delete id="deleteAddress">
-		delete from address where id = #{id}
+		delete from address where qid = #{qid}
 	</delete>
 </mapper>
