@@ -2,6 +2,7 @@ package com.neuedu.vo;
 
 public class VInputSorder 
 {
+	private Integer oid;
 	private int lid;
 	private double total;
 	private int cid;
@@ -14,6 +15,12 @@ public class VInputSorder
 	private String transactionId;
 	private String nickname;
 	private String tel;
+	public Integer getOid() {
+		return oid;
+	}
+	public void setOid(Integer oid) {
+		this.oid = oid;
+	}
 	public int getLid() {
 		return lid;
 	}

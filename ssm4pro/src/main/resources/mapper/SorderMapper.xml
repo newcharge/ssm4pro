@@ -6,44 +6,36 @@
  
    <insert id="addSorder" useGeneratedKeys="true" keyProperty="oid">
    insert into sorder (lid,openid,total,cid,actual,status,ordertime,qid,transactionid,nickname,tel	)
-   values(#{lid},#{openid},#{total},#{cid},#{actual},#{status},#{ordertime},#{qid},#{transactionid},#{nickname},#{tel})
+   values(#{lid},#{openid},#{total},#{cid},#{actual},'待付款',now(),#{qid},#{transactionid},#{nickname},#{tel})
    </insert>
    
    <update id="changeSorderState">
    update sorder set
-     lid = #{lid},
-     openid = #{openid},
-     total = #{total},
-     cid = #{cid},
-     status = #{status},
-     ordertime = #{ordertime},
-     qid = #{qid},
-     transactionid = #{transactionid},
-     nickname = #{nickname},
-     tel = #{tel},
+     status = #{status}
    where oid = #{oid}
    </update>
    
-   <select id="showSorder">
+   
+   <select id="showSorder" resultType="sorder">
    select *
    from sorder
-   where oid=#{oid}
+   where qid=#{qid}
    </select>
    
    <select id="showSorderByOthers" resultType="Sorder">
-   select *
-   from sorder
-   where state = 'ACTIVE'
-   <if test="oid != null">
-       and oid = #{oid}
-   </if>
-   <if test="status != null">
-       and status = #{status}
-   </if>
-   <if test="(startTime != null) and (endTime != null)">
-       and ordertime > str_to_date((#startTime),'%Y-%m-%d %h:%i:%s')
-       and ordertime &lt; str_to_date((#endTime),'%Y-%m-%d %h:%i:%s')
-   </if>
+   select * from sorder
+		where qid = #{qid}
+		<if test="oid != null">
+	    	and oid = #{oid}
+		</if>
+		<if test="status != null">
+	    	and status = #{status}
+		</if>
+		<if test="(startTime != null) and (endTime != null)">
+	    	and unix_timestamp(ordertime) > unix_timestamp(#{startTime}) 
+	    	
+			and unix_timestamp(ordertime) &lt; unix_timestamp(#{endTime})
+		</if>
    </select>
    
    
