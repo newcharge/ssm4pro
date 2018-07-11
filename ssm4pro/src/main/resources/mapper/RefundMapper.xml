@@ -6,24 +6,30 @@
   
  <insert id="addRefund">
     insert into refund (oid,refundreason,refundtime,status)
-    values (#{oid},#{refundreason},#{refundtime},#{status}) 
+    values (#{oid},#{refundreason},now(),'待处理') 
  </insert>
- 
- <delete id="deleteRefundbyOID">
- delete from refund where oid = #{oid}
- </delete>
- 
+
  <update id="editRefund">
    update refund set
-     refundreason = #{refundreason},
-     refundtime = #{refundtime},
-     status = #{status}
+     status = '已处理'
    where oid = #{oid}
  </update>
  
- <select id="showRefundbyOID">
-  select * from refund
-  where oid = #{oid}
+ <select id="showRefundByOthers" resultType="Refund">
+ select * from refund
+ where oid in (select oid from sorder
+		where qid = #{qid})
+		<if test="oid != null">
+	    	and oid = #{oid}
+		</if>
+		<if test="status != null">
+	    	and status = #{status}
+		</if>
+		<if test="(starttime != null) and (endtime != null)">
+	    	and unix_timestamp(refundtime) > unix_timestamp(#{starttime}) 
+	    	
+			and unix_timestamp(refundtime) &lt; unix_timestamp(#{endtime})
+		</if>
  </select>
 
 </mapper>
