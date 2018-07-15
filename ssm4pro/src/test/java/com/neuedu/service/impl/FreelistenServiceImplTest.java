@@ -76,7 +76,7 @@ public class FreelistenServiceImplTest
 		Freelisten freelisten = new Freelisten();
 		freelisten.setQid(1);
 		freelisten.setBranchid(1);
-		freelistenService.showFreelistenByBranchId(freelisten).forEach(System.out::println);
+		freelistenService.showFreelistenByBranchId(1).forEach(System.out::println);
 	}
 
 }
