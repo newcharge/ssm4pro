@@ -26,6 +26,10 @@
 		delete from freelisten where id = #{id}
 	</delete>
 	
+	<select id="showFreelistenById" resultType="Freelisten">
+		select * from freelisten where id = #{id}
+	</select>
+	
 	<select id="showFreelisten" resultType="Freelisten">
 		select * from freelisten where qid = #{qid}
 	</select>
@@ -34,5 +38,12 @@
 		select * from freelisten
 		where qid = #{qid}
 		and branchid = #{branchid}
+	</select>
+	
+	<select id="findLastThree" resultType="Freelisten">
+		select *
+		from freelisten
+		order by id desc
+		limit 3
 	</select>
 </mapper>

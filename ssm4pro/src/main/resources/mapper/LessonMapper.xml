@@ -49,6 +49,13 @@
 		)
 	</select>
 	
+	<select id="findLastThree" resultType="Lesson">
+		select *
+		from lesson
+		order by lid desc
+		limit 3
+	</select>
+	
 	<select id="findById" resultMap="lessonView">
 		select *
 		from lesson

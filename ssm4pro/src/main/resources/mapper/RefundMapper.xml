@@ -3,33 +3,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.dao.RefundDao">
-  
- <insert id="addRefund">
-    insert into refund (oid,refundreason,refundtime,status)
-    values (#{oid},#{refundreason},now(),'待处理') 
- </insert>
 
- <update id="editRefund">
-   update refund set
-     status = '已处理'
-   where oid = #{oid}
- </update>
- 
- <select id="showRefundByOthers" resultType="Refund">
- select * from refund
- where oid in (select oid from sorder
+	<insert id="addRefund">
+		insert into refund (oid,refundreason,refundtime,status)
+		values (#{oid},#{refundreason},now(),'待处理')
+	</insert>
+
+	<update id="editRefund">
+		update refund set
+		status = '已处理'
+		where oid = #{oid}
+	</update>
+
+	<select id="showRefundByOthers" resultType="Refund">
+		select * from refund
+		where oid in (select oid from sorder
 		where qid = #{qid})
 		<if test="oid != null">
-	    	and oid = #{oid}
+			and oid = #{oid}
 		</if>
 		<if test="status != null">
-	    	and status = #{status}
+			and status = #{status}
 		</if>
 		<if test="(starttime != null) and (endtime != null)">
-	    	and unix_timestamp(refundtime) > unix_timestamp(#{starttime}) 
-	    	
+			and unix_timestamp(refundtime) > unix_timestamp(#{starttime})
+
 			and unix_timestamp(refundtime) &lt; unix_timestamp(#{endtime})
 		</if>
- </select>
+	</select>
+
+	<select id="showRefundByOid" resultType="Refund">
+		select *
+		from refund
+		where oid = #{oid}
+	</select>
 
 </mapper>
