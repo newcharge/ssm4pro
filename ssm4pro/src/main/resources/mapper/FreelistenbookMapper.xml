@@ -16,7 +16,7 @@
 	-->
 	
 	<insert id="addFreelistenbook" useGeneratedKeys="true" keyProperty="id">
-		insert into freelistenbook (fid,username,tel,booktime,status,comment) value (#{fid},#{username},#{tel},#{booktime},#{status},#{comment})
+		insert into freelistenbook (fid,username,tel,booktime,status,comment) value (#{fid},#{username},#{tel},now(),'待处理',#{comment})
 	</insert>
 	
 	<update id="changeFreelistenbookState">
@@ -25,7 +25,7 @@
 		where id = #{id}
 	</update>
 	
-	<select id="showFreelistenbook" resultType="Freelistenbook">
+	<select id="showFreelistenbook" resultType="VOutputFreelistenbook">
 		select * from freelistenbook 
 		where fid in (
 			select id
@@ -33,7 +33,7 @@
 			where qid = #{qid})
 	</select>
 	
-	<select id="showFreelistenbookByOthers" resultType="Freelistenbook">
+	<select id="showFreelistenbookByOthers" resultType="VOutputFreelistenbook">
 		select * from freelistenbook
 		where fid in (
 			select id
@@ -51,6 +51,16 @@
 			and unix_timestamp(booktime) &lt; unix_timestamp(#{endtime})
 		</if>
 
+	</select>
+	
+	<select id="showFreelistenbookByQidUser" resultType="Freelistenbook">
+		select *
+		from freelistenbook
+		where fid in (
+			select id
+			from freelisten
+			where qid = #{qid})
+		and tel = #{tel}
 	</select>
 
 </mapper>
