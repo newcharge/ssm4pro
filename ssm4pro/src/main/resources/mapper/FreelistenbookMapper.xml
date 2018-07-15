@@ -25,30 +25,32 @@
 		where id = #{id}
 	</update>
 	
-	<select id="showFreelistenbook" resultType="Freelistenbook">
-		select * from freelistenbook 
-		where fid in (
+	<select id="showFreelistenbook" resultType="VOutputFreelistenbook">
+		select freelistenbook.id,freelisten.title,freelistenbook.username,freelistenbook.tel,freelistenbook.status,freelistenbook.booktime,freelistenbook.comment from freelistenbook,freelisten
+		where freelistenbook.fid=freelisten.id
+		and freelistenbook.fid in (
 			select id
 			from freelisten
 			where qid = #{qid})
 	</select>
 	
-	<select id="showFreelistenbookByOthers" resultType="Freelistenbook">
-		select * from freelistenbook
-		where fid in (
+	<select id="showFreelistenbookByOthers" resultType="VOutputFreelistenbook">
+		select freelistenbook.id,freelisten.title,freelistenbook.username,freelistenbook.tel,freelistenbook.status,freelistenbook.booktime,freelistenbook.comment from freelistenbook,freelisten
+		where freelistenbook.fid=freelisten.id
+		and freelistenbook.fid in (
 			select id
 			from freelisten
 			where qid = #{qid})
 		<if test="id != null">
-	    	and id = #{id}
+	    	and freelistenbook.id = #{id}
 		</if>
 		<if test="status != null">
-	    	and status = #{status}
+	    	and freelistenbook.status = #{status}
 		</if>
 		<if test="(starttime != null) and (endtime != null)">
-	    	and unix_timestamp(booktime) > unix_timestamp(#{starttime}) 
+	    	and unix_timestamp(freelistenbook.booktime) > unix_timestamp(#{starttime}) 
 	    	
-			and unix_timestamp(booktime) &lt; unix_timestamp(#{endtime})
+			and unix_timestamp(freelistenbook.booktime) &lt; unix_timestamp(#{endtime})
 		</if>
 
 	</select>
