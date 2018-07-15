@@ -26,10 +26,6 @@
 		delete from freelisten where id = #{id}
 	</delete>
 	
-	<select id="showFreelistenById" resultType="Freelisten">
-		select * from freelisten where id = #{id}
-	</select>
-	
 	<select id="showFreelisten" resultType="Freelisten">
 		select * from freelisten where qid = #{qid}
 	</select>

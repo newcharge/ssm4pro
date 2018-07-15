@@ -73,10 +73,7 @@ public class FreelistenServiceImplTest
 	@Ignore
 	@Test
 	public void testShowFreelistenByBranchId() throws Exception {
-		Freelisten freelisten = new Freelisten();
-		freelisten.setQid(1);
-		freelisten.setBranchid(1);
-		freelistenService.showFreelistenByBranchId(freelisten).forEach(System.out::println);
+		freelistenService.showFreelistenByBranchId(1).forEach(System.out::println);
 	}
 
 }
