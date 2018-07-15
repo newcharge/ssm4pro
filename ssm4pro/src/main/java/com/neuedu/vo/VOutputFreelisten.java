@@ -1,7 +1,5 @@
 package com.neuedu.vo;
 
-import java.util.Date;
-
 public class VOutputFreelisten 
 {
 	private int id;
