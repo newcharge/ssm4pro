@@ -1,7 +1,5 @@
 package com.neuedu.service.impl;
 
-import static org.junit.Assert.fail;
-
 import java.sql.Timestamp;
 
 import org.junit.Ignore;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neuedu.po.Freelisten;
 import com.neuedu.po.Freelistenbook;
 import com.neuedu.service.FreelistenbookService;
 import com.neuedu.vo.VInputFreelistenbook;

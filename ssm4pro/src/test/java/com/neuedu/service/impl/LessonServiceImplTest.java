@@ -44,6 +44,7 @@ public class LessonServiceImplTest {
 		assertTrue(lessonService.addLesson(vilesson));
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteLesson() throws Exception {
 		assertTrue(lessonService.deleteLesson(26));
@@ -80,6 +81,11 @@ public class LessonServiceImplTest {
 	@Test
 	public void testShowLessonByBranchId() throws Exception {
 		lessonService.showLessonByBranchId(1).forEach(System.out::println);
+	}
+	
+	@Test
+	public void testShowLastThree() throws Exception {
+		lessonService.showLastThreeLesson(1).forEach(System.out::println);;
 	}
 
 	@Ignore

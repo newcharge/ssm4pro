@@ -1,10 +1,6 @@
 package com.neuedu.service.impl;
 
-import static org.junit.Assert.fail;
-
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.Ignore;
 import org.junit.Test;
