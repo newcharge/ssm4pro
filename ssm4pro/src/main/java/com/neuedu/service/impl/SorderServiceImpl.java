@@ -45,6 +45,15 @@ public class SorderServiceImpl implements SorderService{
 		return sorderDao.changeSorderState(sorder);
 	}
 	
+	@Transactional
+	@Override
+	public boolean payroll(int oid) throws Exception {
+		// TODO Auto-generated method stub
+		Sorder sorder = new Sorder();
+		sorder.setOid(oid);
+		sorder.setStatus("已付款");
+		return sorderDao.changeSorderState(sorder);
+	}
 	
 	@Transactional
 	@Override
@@ -59,6 +68,15 @@ public class SorderServiceImpl implements SorderService{
 		// TODO Auto-generated method stub
 		return sorderDao.showSorderByOthers(vis);
 	}
+
+	@Transactional
+	@Override
+	public List<Sorder> showSorderByEle(Sorder sorder) throws Exception {
+		// TODO Auto-generated method stub
+		return sorderDao.showSorderByEle(sorder);
+	}
+
+
 
 	
 

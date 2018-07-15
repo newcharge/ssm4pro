@@ -92,13 +92,13 @@ public class MessageServiceImpl implements MessageService {
 	/*
 	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#deleteLike(int)
-	 * 暂未实现:删除添加的点赞应该不是用id作为参考的...?
+	 * 看来没错，只能用候选码了
 	 */
 	@Transactional
 	@Override
-	public boolean deleteLike(int id) throws Exception {
+	public boolean deleteLike(Messagelike like) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return messagelikeDao.deleteLike(like);
 	}
 	
 	/*

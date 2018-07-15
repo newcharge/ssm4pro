@@ -90,6 +90,13 @@ public class LessonServiceImpl implements LessonService {
 
 	@Transactional
 	@Override
+	public List<Lesson> showLastThreeLesson(int qid) throws Exception {
+		// TODO Auto-generated method stub
+		return lessonDao.findLastThree(qid);
+	}
+	
+	@Transactional
+	@Override
 	public VOutputLesson getLessonById(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return lessonDao.findById(id);

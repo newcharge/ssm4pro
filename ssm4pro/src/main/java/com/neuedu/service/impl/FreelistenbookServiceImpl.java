@@ -10,6 +10,7 @@ import com.neuedu.dao.FreelistenbookDao;
 import com.neuedu.po.Freelistenbook;
 import com.neuedu.service.FreelistenbookService;
 import com.neuedu.vo.VInputFreelistenbook;
+import com.neuedu.vo.VOutputFreelistenbook;
 
 @Service
 public class FreelistenbookServiceImpl implements FreelistenbookService {
@@ -38,9 +39,9 @@ public class FreelistenbookServiceImpl implements FreelistenbookService {
 
 	@Transactional
 	@Override
-	public List<Freelistenbook> showFreelistenbook(int qid) throws Exception {
+	public List<VOutputFreelistenbook> showFreelistenbook(int qid) throws Exception {
 		// TODO Auto-generated method stub
-		List<Freelistenbook> list;
+		List<VOutputFreelistenbook> list;
 
 		list = freelistenbookDao.showFreelistenbook(qid);
 		return list;
@@ -48,12 +49,18 @@ public class FreelistenbookServiceImpl implements FreelistenbookService {
 
 	@Transactional
 	@Override
-	public List<Freelistenbook> showFreelistenbookByOthers(VInputFreelistenbook vif) throws Exception {
+	public List<VOutputFreelistenbook> showFreelistenbookByOthers(VInputFreelistenbook vif) throws Exception {
 		// TODO Auto-generated method stub
-		List<Freelistenbook> list;
+		List<VOutputFreelistenbook> list;
 
 		list = freelistenbookDao.showFreelistenbookByOthers(vif);
 		return list;
+	}
+
+	@Override
+	public List<Freelistenbook> showFreelistenbookByQidUser(VInputFreelistenbook vif) throws Exception {
+		// TODO Auto-generated method stub
+		return freelistenbookDao.showFreelistenbookByQidUser(vif);
 	}
 
 

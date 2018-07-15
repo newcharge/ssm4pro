@@ -40,4 +40,10 @@ public class RefundServiceImpl implements RefundService {
 		return refundDao.showRefundByOthers(vir);
 	}
 
+	@Override
+	public Refund showByOid(int oid) throws Exception {
+		// TODO Auto-generated method stub
+		return refundDao.showRefundByOid(oid);
+	}
+
 }

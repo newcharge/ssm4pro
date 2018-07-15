@@ -12,9 +12,10 @@ import com.neuedu.service.TeacherService;
 
 @Service
 public class TeacherServiceImpl implements TeacherService {
-
+	
 	@Autowired
-	TeacherDao teacherDao;
+	private TeacherDao teacherDao;
+	
 	@Transactional
 	@Override
 	public boolean addTeacher(Teacher teacher) throws Exception {
