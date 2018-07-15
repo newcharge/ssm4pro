@@ -15,7 +15,7 @@ public interface MessageService
 	
 	public boolean deleteMessage(int id) throws Exception;
 	public boolean deleteReply(int id) throws Exception;
-	public boolean deleteLike(int id) throws Exception;
+	public boolean deleteLike(Messagelike like) throws Exception;
 	
 	public boolean editMessage(VInputMessage vimessage) throws Exception;
 	

@@ -12,5 +12,6 @@ public interface LessonService {
 	public boolean editLesson(VInputLesson vil) throws Exception;
 	public List<Lesson> showLesson(int qid) throws Exception;
 	public List<Lesson> showLessonByBranchId(int branchid) throws Exception;//之前的注释是乱码
+	public List<Lesson> showLastThreeLesson(int qid) throws Exception;
 	public VOutputLesson getLessonById(int id) throws Exception;
 }

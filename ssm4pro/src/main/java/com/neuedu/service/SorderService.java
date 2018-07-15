@@ -10,6 +10,8 @@ public interface SorderService
 {
 	public boolean addSorder(Sorder sorder) throws Exception;
 	public boolean createRefund(VInputRefund vir) throws Exception;
+	public boolean payroll(int oid) throws Exception;
 	public List<Sorder> showSorder(int qid) throws Exception;
 	public List<Sorder> showSorderByOthers(VInputSorder vis) throws Exception;
+	public List<Sorder> showSorderByEle(Sorder sorder) throws Exception;
 }

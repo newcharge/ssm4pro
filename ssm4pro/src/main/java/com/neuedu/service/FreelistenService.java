@@ -9,6 +9,8 @@ public interface FreelistenService
 	public boolean addFreelisten(Freelisten freelisetn) throws Exception;
 	public boolean editFreelisten(Freelisten freelisetn) throws Exception;
 	public boolean deleteFreelisten(int id) throws Exception;
+	public Freelisten showFreelistenById(int id) throws Exception;
 	public List<Freelisten> showFreelisten(int qid) throws Exception;
 	public List<Freelisten> showFreelistenByBranchId(Freelisten freelisetn) throws Exception;
+	public List<Freelisten> showLastThreeFreelisten(int qid) throws Exception;
 }
