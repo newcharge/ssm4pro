@@ -10,4 +10,5 @@ public interface RefundDao {
 	public boolean addRefund (Refund refund) throws Exception;
 	public boolean editRefund (Refund refund) throws Exception;
 	public List<Refund> showRefundByOthers(VInputRefund vir) throws Exception;	
+	public Refund showRefundByOid(int oid) throws Exception;
 }

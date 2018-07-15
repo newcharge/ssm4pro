@@ -13,4 +13,5 @@ public interface SorderDao {
 	public boolean changeSorderState(Sorder sorder) throws Exception;
 	public List<Sorder> showSorder(int qid) throws Exception;
 	public List<Sorder> showSorderByOthers(VInputSorder vis) throws Exception;
+	public List<Sorder> showSorderByEle(Sorder sorder) throws Exception;
 }

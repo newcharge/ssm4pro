@@ -11,5 +11,6 @@ public interface LessonDao {
 	public boolean updateLesson(Lesson lesson) throws Exception;
 	public List<Lesson> findAllByQid(int qid) throws Exception;
 	public List<Lesson> findAllByBranchid(int branchid) throws Exception;
+	public List<Lesson> findLastThree(int qid) throws Exception;
 	public VOutputLesson findById(int lid) throws Exception;
 }
