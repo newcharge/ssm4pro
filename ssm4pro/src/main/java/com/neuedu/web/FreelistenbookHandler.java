@@ -53,4 +53,21 @@ public class FreelistenbookHandler {
 		return freelistenbookService.changeFreelistenbookState(freelistenbook);
 	}
 
+	@RequestMapping(value = "book/bookFreeListen.action")
+	@ResponseBody
+	public boolean bookFreeListen(String jsonData) throws Exception {
+		Freelistenbook freelistenbook = JsonUtils.jsonToPojo(jsonData, Freelistenbook.class);
+		System.out.println(freelistenbook);
+		return freelistenbookService.addFreelistenbook(freelistenbook);
+	}
+	
+	@RequestMapping(value = "book/getFreeListen.action")
+	@ResponseBody
+	public List<Freelistenbook> getFreelistenbookByUsername(String jsonData) throws Exception {
+		VInputFreelistenbook vif = JsonUtils.jsonToPojo(jsonData, VInputFreelistenbook.class);
+		System.out.println(vif.getQid() + "_" + vif.getTel());
+		List<Freelistenbook> list = freelistenbookService.showFreelistenbookByQidUser(vif);
+		list.forEach(System.out::println);
+		return list;
+	}
 }
