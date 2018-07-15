@@ -42,6 +42,7 @@
 	<select id="findLastThree" resultType="Freelisten">
 		select *
 		from freelisten
+		where qid = #{qid}
 		order by id desc
 		limit 3
 	</select>
