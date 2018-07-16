@@ -1,22 +1,23 @@
 package com.neuedu.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.neuedu.po.User;
-import com.neuedu.service.UserService;
+import com.neuedu.po.Address;
+import com.neuedu.service.AddressService;
 
 @Controller
-public class UserHandler {
-
+public class AddressHandler {
 	@Autowired
-	UserService userService;
-
-	@RequestMapping(value = "usr/showAll.action")
+	AddressService addressService;
+	
+	@RequestMapping(value = "addr/showAll.action")
 	@ResponseBody
-	public boolean valid(User user) throws Exception {
-		return userService.valid(user);
+	public List<Address> showAll(int qid) throws Exception {
+		return addressService.showAddress(qid);
 	}
 }
