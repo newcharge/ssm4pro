@@ -9,35 +9,58 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.service.MessageService;
 import com.neuedu.vo.VInputMessage;
+import com.neuedu.po.Messagelike;
+import com.neuedu.po.Messagereply;
 import com.neuedu.vo.VOutputMessage;
 
 @Controller
 public class MessageHandler {
-
 	@Autowired
 	MessageService messageService;
-
-	@RequestMapping(value = "message/showMessage.action")
-	@ResponseBody
-	public List<VOutputMessage> showMessage(int qid) throws Exception {
-		return messageService.showMessageByQid(qid);
-	}
 	
-	@RequestMapping(value = "message/editMessage.action")
+	@RequestMapping(value = "msg/editMessage.action")
 	@ResponseBody
 	public boolean editMessage(VInputMessage vim) throws Exception {
 		return messageService.editMessage(vim);
 	}
 	
-	@RequestMapping(value = "message/deleteMessage.action")
+	@RequestMapping(value = "msg/deleteMessage.action")
 	@ResponseBody
 	public boolean deleteMessage(int id) throws Exception {
 		return messageService.deleteMessage(id);
 	}
 	
-	@RequestMapping(value = "message/addMessage.action")
+	@RequestMapping(value = "msg/addMessage.action")
 	@ResponseBody
 	public boolean addMessage(VInputMessage vim) throws Exception {
 		return messageService.addMessage(vim);
+	}
+
+	@RequestMapping(value = "msg/showMessage.action")
+	@ResponseBody
+	public List<VOutputMessage> showMessage(int qid) throws Exception {
+		System.out.println(qid);
+		return messageService.showMessageByQid(qid);
+	}
+	
+	@RequestMapping(value = "msg/addLike.action")
+	@ResponseBody
+	public boolean addLike(String jsonData) throws Exception {
+		Messagelike like = JsonUtils.jsonToPojo(jsonData, Messagelike.class);
+		return messageService.addLike(like);
+	}
+	
+	@RequestMapping(value = "msg/deleteLike.action")
+	@ResponseBody
+	public boolean deleteLike(String jsonData) throws Exception {
+		Messagelike like = JsonUtils.jsonToPojo(jsonData, Messagelike.class);
+		return messageService.deleteLike(like);
+	}
+	
+	@RequestMapping(value = "msg/addReply.action")
+	@ResponseBody
+	public boolean addReply(String jsonData) throws Exception {
+		Messagereply reply = JsonUtils.jsonToPojo(jsonData, Messagereply.class);
+		return messageService.addReply(reply);
 	}
 }

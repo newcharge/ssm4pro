@@ -16,9 +16,9 @@ public class AddressHandler {
 	@Autowired
 	AddressService addressService;
 	
-	@RequestMapping(value = "address/showAddress.action")
+	@RequestMapping(value = "addr/showAll.action")
 	@ResponseBody
-	public List<Address> showAddress(int qid) throws Exception {
+	public List<Address> showAll(int qid) throws Exception {
 		return addressService.showAddress(qid);
 	}
 }

@@ -17,18 +17,23 @@ public class LessonHandler {
 	@Autowired
 	LessonService lessonService;
 
-	@RequestMapping(value = "lesson/showLesson.action")
-	@ResponseBody
-	public List<Lesson> showLesson(int qid) throws Exception {
-		System.out.println(qid);
-		return lessonService.showLesson(qid);
-	}
-	
 	@RequestMapping(value = "lesson/deleteLesson.action")
 	@ResponseBody
 	public boolean deleteLesson(int id) throws Exception {
 		System.out.println(id);
 		return lessonService.deleteLesson(id);
+	}
+	
+	@RequestMapping(value = "lesson/showLastThreeLesson.action")
+	@ResponseBody
+	public List<Lesson> showLastThreeLesson(int qid) throws Exception {
+		return lessonService.showLastThreeLesson(qid);
+	}
+	
+	@RequestMapping(value = "lesson/showAll.action")
+	@ResponseBody
+	public List<Lesson> showAll(int qid) throws Exception {
+		return lessonService.showLesson(qid);
 	}
 	
 	@RequestMapping(value = "lesson/showLessonById.action")

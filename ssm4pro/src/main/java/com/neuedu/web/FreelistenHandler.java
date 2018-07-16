@@ -41,4 +41,11 @@ public class FreelistenHandler {
 	public boolean deleteFreelisten(int id) throws Exception {
 		return freelistenService.deleteFreelisten(id);
 	}
+
+	@RequestMapping(value = "freelisten/showLastThreeFreelisten.action")
+	@ResponseBody
+	public List<Freelisten> showLastThreeFreelisten(int qid) throws Exception {
+		return freelistenService.showLastThreeFreelisten(qid);
+	}
+
 }
