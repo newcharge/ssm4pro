@@ -16,7 +16,6 @@ public class EnterpriseHandler {
 	@RequestMapping(value = "enterprise/showEnterprise.action")
 	@ResponseBody
 	public VOutputEnterprise showEnterprise(int qid) throws Exception {
-		System.out.println(qid);
 		return enterpriseService.showEnterprise(qid);
 	}
 }

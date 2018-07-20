@@ -14,4 +14,8 @@ public interface SorderDao {
 	public List<Sorder> showSorder(int qid) throws Exception;
 	public List<Sorder> showSorderByOthers(VInputSorder vis) throws Exception;
 	public List<Sorder> showSorderByEle(Sorder sorder) throws Exception;
+	public List<Sorder> showHeXiao(int qid) throws Exception;
+	public List<Sorder> showHeXiaoByOthers(VInputSorder vis) throws Exception;
+	public List<Sorder> showRefundByOthers(VInputSorder vis) throws Exception;
+	public boolean dealHeXiao(int oid) throws Exception;
 }

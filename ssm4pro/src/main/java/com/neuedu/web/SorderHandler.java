@@ -49,6 +49,34 @@ public class SorderHandler {
 		return sorderService.showSorderByOthers(vis);
 	}
 	
+	@RequestMapping(value = "sorder/showHeXiao.action")
+	@ResponseBody
+	public List<Sorder> showHeXiao(int qid) throws Exception {
+		System.out.println(qid);
+		return sorderService.showHeXiao(qid);
+	}
+	
+	@RequestMapping(value = "sorder/showHeXiaoByOthers.action")
+	@ResponseBody
+	public List<Sorder> showHeXiaoByOthers(String jsonData) throws Exception {
+		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
+		
+		if(vis.getStatus()=="")
+			vis.setStatus(null);
+		if(vis.getStartTime()=="")
+			vis.setStartTime(null);
+		if(vis.getEndTime()=="")
+			vis.setEndTime(null);
+		return sorderService.showHeXiaoByOthers(vis);
+	}
+	
+	@RequestMapping(value = "sorder/dealHeXiao.action")
+	@ResponseBody
+	public boolean dealHeXiao(int id) throws Exception {
+		System.out.println(id);
+		return sorderService.dealHeXiao(id);
+	}
+	
 	@RequestMapping(value = "order/addOrder.action")
 	@ResponseBody
 	public boolean addOrder(String jsonData) throws Exception {

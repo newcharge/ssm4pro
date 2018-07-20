@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Lesson;
 import com.neuedu.po.Sorder;
 import com.neuedu.service.LessonService;
+import com.neuedu.vo.VInputLesson;
 import com.neuedu.vo.VOutputLesson;
 
 @Controller
@@ -19,6 +20,25 @@ public class LessonHandler {
 	private static final int pageSize = 10;
 	@Autowired
 	LessonService lessonService;
+	
+	@RequestMapping(value = "lesson/addLesson.action")
+	@ResponseBody
+	public boolean addLesson(String jsonData) throws Exception {
+		VInputLesson vil = JsonUtils.jsonToPojo(jsonData, VInputLesson.class);
+		System.out.println(vil);
+		
+		return lessonService.addLesson(vil);
+	}
+	
+	@RequestMapping(value = "lesson/editLesson.action")
+	@ResponseBody
+	public boolean editLesson(String jsonData) throws Exception {
+		VInputLesson vil = JsonUtils.jsonToPojo(jsonData, VInputLesson.class);
+		System.out.println(vil);
+		
+		return lessonService.editLesson(vil);
+	}
+
 
 	@RequestMapping(value = "lesson/deleteLesson.action")
 	@ResponseBody

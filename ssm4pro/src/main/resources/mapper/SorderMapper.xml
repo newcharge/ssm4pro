@@ -39,6 +39,53 @@
 			and unix_timestamp(ordertime) &lt; unix_timestamp(#{endTime})
 		</if>
 	</select>
+	
+	<select id="showHeXiao" resultType="Sorder">
+		select *
+		from sorder
+		where qid = #{qid}
+		and (status = '已付款' or status = '已使用')
+	</select>
+	
+	<select id="showHeXiaoByOthers" resultType="Sorder">
+		select * from sorder
+		where qid = #{qid}
+		and (status = '已付款' or status = '已使用')
+		<if test="oid != null">
+			and oid = #{oid}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="(startTime != null) and (endTime != null)">
+			and unix_timestamp(ordertime) > unix_timestamp(#{startTime})
+
+			and unix_timestamp(ordertime) &lt; unix_timestamp(#{endTime})
+		</if>
+	</select>
+	
+	<select id="showRefundByOthers" resultType="Sorder">
+		select * from sorder
+		where qid = #{qid}
+		and (status = '已退款' or status = '退款中')
+		<if test="oid != null">
+			and oid = #{oid}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="(startTime != null) and (endTime != null)">
+			and unix_timestamp(ordertime) > unix_timestamp(#{startTime})
+
+			and unix_timestamp(ordertime) &lt; unix_timestamp(#{endTime})
+		</if>
+	</select>
+	
+	<update id="dealHeXiao">
+		update sorder set
+		status = '已使用'
+		where oid = #{oid}
+	</update>
 
 	<select id="showSorderByEle" resultType="Sorder">
 		select *
