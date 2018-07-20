@@ -7,13 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Lesson;
+import com.neuedu.po.Sorder;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VOutputLesson;
 
 @Controller
 public class LessonHandler {
-
+	private static final int pageSize = 10;
 	@Autowired
 	LessonService lessonService;
 
@@ -48,5 +51,11 @@ public class LessonHandler {
 	public List<Lesson> showLessonByBranch(int branchid) throws Exception {
 		System.out.println(branchid);
 		return lessonService.showLessonByBranchId(branchid);
+	}
+	@RequestMapping(value = "lesson/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<Lesson> showLessonPageByQid(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(lessonService.showLesson(qid));
 	}
 }

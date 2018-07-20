@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.service.MessageService;
 import com.neuedu.vo.VInputMessage;
+import com.neuedu.vo.VInputSorder;
 import com.neuedu.po.Messagelike;
 import com.neuedu.po.Messagereply;
 import com.neuedu.vo.VOutputMessage;
@@ -32,7 +33,8 @@ public class MessageHandler {
 	
 	@RequestMapping(value = "msg/addMessage.action")
 	@ResponseBody
-	public boolean addMessage(VInputMessage vim) throws Exception {
+	public boolean addMessage(String jsonData) throws Exception {
+		VInputMessage vim = JsonUtils.jsonToPojo(jsonData, VInputMessage.class);
 		return messageService.addMessage(vim);
 	}
 

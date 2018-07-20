@@ -15,7 +15,7 @@ import com.neuedu.service.TeacherService;
 @Controller
 public class TeacherHandler {
 	
-	private static final int pageSize = 2;
+	private static final int pageSize = 10;
 	
 	@Autowired
 	TeacherService teacherService;
