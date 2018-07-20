@@ -26,8 +26,9 @@ public class MessageHandler {
 	
 	@RequestMapping(value = "msg/deleteMessage.action")
 	@ResponseBody
-	public boolean deleteMessage(int id) throws Exception {
-		return messageService.deleteMessage(id);
+	public boolean deleteMessage(int mid) throws Exception {
+		System.out.println(mid);
+		return messageService.deleteMessage(mid);
 	}
 	
 	@RequestMapping(value = "msg/addMessage.action")
@@ -39,7 +40,7 @@ public class MessageHandler {
 	@RequestMapping(value = "msg/showMessage.action")
 	@ResponseBody
 	public List<VOutputMessage> showMessage(int qid) throws Exception {
-		System.out.println(qid);
+		//System.out.println(qid);
 		return messageService.showMessageByQid(qid);
 	}
 	
@@ -62,5 +63,12 @@ public class MessageHandler {
 	public boolean addReply(String jsonData) throws Exception {
 		Messagereply reply = JsonUtils.jsonToPojo(jsonData, Messagereply.class);
 		return messageService.addReply(reply);
+	}
+	
+	@RequestMapping(value = "msg/deleteReply.action")
+	@ResponseBody
+	public boolean deleteReply(int id) throws Exception {
+		
+		return messageService.deleteReply(id);
 	}
 }

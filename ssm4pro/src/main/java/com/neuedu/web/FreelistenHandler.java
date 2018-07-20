@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
+import com.neuedu.vo.VInputLesson;
 
 @Controller
 public class FreelistenHandler {
@@ -16,6 +17,23 @@ public class FreelistenHandler {
 	@Autowired
 	FreelistenService freelistenService;
 
+	@RequestMapping(value = "freelisten/addFreelisten.action")
+	@ResponseBody
+	public boolean addFreelisten(String jsonData) throws Exception {
+		Freelisten freelisten = JsonUtils.jsonToPojo(jsonData, Freelisten.class);
+		System.out.println(freelisten);
+		return freelistenService.addFreelisten(freelisten);
+	}
+	
+	@RequestMapping(value = "freelisten/editFreelisten.action")
+	@ResponseBody
+	public boolean editFreelisten(String jsonData) throws Exception {
+		Freelisten freelisten = JsonUtils.jsonToPojo(jsonData, Freelisten.class);
+		System.out.println(freelisten);
+		return freelistenService.editFreelisten(freelisten);
+	}
+	
+	
 	@RequestMapping(value = "freelisten/showFreelisten.action")
 	@ResponseBody
 	public List<Freelisten> showFreelisten(int qid) throws Exception {

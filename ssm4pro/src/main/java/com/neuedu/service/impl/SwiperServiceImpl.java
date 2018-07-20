@@ -18,9 +18,18 @@ public class SwiperServiceImpl implements SwiperService {
 	
 	@Transactional
 	@Override
-	public List<String> showSwiperByCategory(Swiper swiper) {
+	public List<String> showSwiperByCategory(Swiper swiper) throws Exception {
 		// TODO Auto-generated method stub
 		return swiperDao.findAllByCategory(swiper);
 	}
+	
+	@Transactional
+	@Override
+	public boolean addSwiper(Swiper swiper) throws Exception {
+		// TODO Auto-generated method stub
+		return swiperDao.addSwiper(swiper);
+	}
+	
+	
 
 }

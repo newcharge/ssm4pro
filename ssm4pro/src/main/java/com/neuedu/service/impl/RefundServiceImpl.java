@@ -24,13 +24,13 @@ public class RefundServiceImpl implements RefundService {
 
 	@Transactional
 	@Override
-	public boolean editRefund(Refund refund) throws Exception {
+	public boolean editRefund(int oid) throws Exception {
 		// TODO Auto-generated method stub
 		Sorder sorder = new Sorder();
-		sorder.setOid(refund.getOid());
+		sorder.setOid(oid);
 		sorder.setStatus("已退款");
 		sorderDao.changeSorderState(sorder);
-		return refundDao.editRefund(refund);
+		return refundDao.editRefund(oid);
 	}
 
 	@Transactional
@@ -40,10 +40,18 @@ public class RefundServiceImpl implements RefundService {
 		return refundDao.showRefundByOthers(vir);
 	}
 
+	@Transactional
 	@Override
 	public Refund showByOid(int oid) throws Exception {
 		// TODO Auto-generated method stub
 		return refundDao.showRefundByOid(oid);
+	}
+
+	@Transactional
+	@Override
+	public List<Sorder> showRefund(int qid) throws Exception {
+		// TODO Auto-generated method stub
+		return refundDao.showRefund(qid);
 	}
 
 }

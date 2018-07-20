@@ -10,5 +10,10 @@
 		where qid = #{qid}
 		and category = #{category}
 	</select>
+	
+	<insert id="addSwiper" useGeneratedKeys="true" keyProperty="id">
+		insert into swiper (qid, imgurl, category)
+		values(#{qid}, #{imgurl}, #{category})
+	</insert>
 
 </mapper>
