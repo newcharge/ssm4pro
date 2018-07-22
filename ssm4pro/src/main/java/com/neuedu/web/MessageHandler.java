@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.service.MessageService;
 import com.neuedu.vo.VInputMessage;
+import com.neuedu.vo.VOutputFreelistenbook;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.neuedu.po.Message;
 import com.neuedu.po.Messagelike;
 import com.neuedu.po.Messagereply;
 import com.neuedu.vo.VOutputMessage;
 
 @Controller
 public class MessageHandler {
+	private static final int pageSize = 10;
 	@Autowired
 	MessageService messageService;
 	
@@ -70,5 +75,11 @@ public class MessageHandler {
 	public boolean deleteReply(int id) throws Exception {
 		
 		return messageService.deleteReply(id);
+	}
+	@RequestMapping(value = "msg/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<VOutputMessage> showAllByPage(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(messageService.showMessageByQid(qid));
 	}
 }

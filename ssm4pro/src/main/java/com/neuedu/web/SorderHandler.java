@@ -7,13 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Sorder;
+import com.neuedu.po.Teacher;
 import com.neuedu.service.SorderService;
 import com.neuedu.vo.VInputRefund;
 import com.neuedu.vo.VInputSorder;
 
 @Controller
 public class SorderHandler {
+	private static final int pageSize = 10;
 	@Autowired
 	SorderService sorderService;
 
@@ -104,5 +108,11 @@ public class SorderHandler {
 		VInputRefund vir = JsonUtils.jsonToPojo(jsonData, VInputRefund.class);
 		System.out.println(vir.getRefundReason());
 		return sorderService.createRefund(vir);
+	}
+	@RequestMapping(value = "order/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<Sorder> showTeacherPageByQid(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showSorder(qid));
 	}
 }
