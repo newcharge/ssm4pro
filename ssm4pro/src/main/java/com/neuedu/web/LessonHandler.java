@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Lesson;
-import com.neuedu.po.Teacher;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
 import com.neuedu.vo.VOutputLesson;
@@ -75,7 +74,8 @@ public class LessonHandler {
 	}
 	@RequestMapping(value = "lesson/showAllByPage.action")
 	@ResponseBody
-	public PageInfo<Lesson> showTeacherPageByQid(int qid, int pageNum) throws Exception {
+
+	public PageInfo<Lesson> showLessonPageByQid(int qid, int pageNum) throws Exception {
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(lessonService.showLesson(qid));
 	}

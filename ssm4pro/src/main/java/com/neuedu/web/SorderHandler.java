@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Sorder;
-import com.neuedu.po.Teacher;
 import com.neuedu.service.SorderService;
 import com.neuedu.vo.VInputRefund;
 import com.neuedu.vo.VInputSorder;
@@ -111,7 +110,7 @@ public class SorderHandler {
 	}
 	@RequestMapping(value = "order/showAllByPage.action")
 	@ResponseBody
-	public PageInfo<Sorder> showTeacherPageByQid(int qid, int pageNum) throws Exception {
+	public PageInfo<Sorder> showSorderPageByQid(int qid, int pageNum) throws Exception {
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(sorderService.showSorder(qid));
 	}
