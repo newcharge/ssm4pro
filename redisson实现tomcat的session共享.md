@@ -1,6 +1,6 @@
-####redisson 整合方式——与 Tomcat vX.X 整合的步骤
+#### redisson 整合方式——与 Tomcat vX.X 整合的步骤
 
-#####Tomcat的准备工作
+##### Tomcat的准备工作
 
 1. 在tomcat安装路径下的lib文件夹中放入"redisson-all.jar"和"redisson-tomcat-X.jar"，以确保tomcat能正常使用redisson提供的类。
 
@@ -28,7 +28,7 @@
 
 在集群中的每台Tomcat上进行上述配置，Tomcat部分的准备工作完成。
 
-#####Redis的准备工作
+##### Redis的准备工作
 
 1. redis可以架设在与Tomcat不同的位置，这里采用的是单节点模式，只有一个redis服务监听，为此需要修改配置文件，使其允许外部访问（如果已经将绑定设定为0.0.0.0，就不需要再另行修改）。
 2. 由于指定了配置文件，在运行redis-server时需要加上路参数，指明配置文件的路径。
@@ -38,10 +38,10 @@
 
 在指定的非127.0.0.1的套接字下 ping PONG 成功即可确认Redis部分的准备工作完成
 
-#####Nginx的准备工作
+##### Nginx的准备工作
 
 如果之前配置了ip-hash，去ip-hash即可，只需要去掉 "ip_hash;" 一行。
 
-#####系统测试时的启动顺序
+##### 系统测试时的启动顺序
 
 nginx -> redis -> tomcat
