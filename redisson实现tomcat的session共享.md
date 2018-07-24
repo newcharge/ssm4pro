@@ -3,7 +3,23 @@
 ##### Tomcat的准备工作
 
 1. 在tomcat安装路径下的lib文件夹中放入"redisson-all.jar"和"redisson-tomcat-X.jar"，以确保tomcat能正常使用redisson提供的类。
-
+	下载地址:
+	redisson本体↓
+	JDK 1.8+适用[redisson-all-3.6.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-all&v=3.6.4&e=jar)
+	JDK 1.6+适用[redisson-all-2.11.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-all&v=2.11.4&e=jar)
+	
+	JDK 1.8+下的Tomcat支持组件↓
+	Tomcat 6.x适用[redisson-tomcat-6-3.6.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-6&v=3.6.4&e=jar)
+	Tomcat 7.x适用[redisson-tomcat-7-3.6.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-7&v=3.6.4&e=jar)
+	Tomcat 8.x适用[redisson-tomcat-8-3.6.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-8&v=3.6.4&e=jar)
+	Tomcat 9.x适用[redisson-tomcat-9-3.6.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-9&v=3.6.4&e=jar)
+	
+	JDK 1.6+下的Tomcat支持组件↓
+	Tomcat 6.x适用[redisson-tomcat-6-2.11.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-6&v=2.11.4&e=jar)
+	Tomcat 7.x适用[redisson-tomcat-7-2.11.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-7&v=2.11.4&e=jar)
+	Tomcat 8.x适用[redisson-tomcat-8-2.11.4.jar](https://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.redisson&a=redisson-tomcat-8&v=2.11.4&e=jar)
+	
+	
 2. 修改tomcat的context.xml，加入这一段代码：
 	<Manager className="org.redisson.tomcat.RedissonSessionManager"
 				configPath="${catalina.base}/conf/redisson.conf"
