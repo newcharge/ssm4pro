@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Refund;
 import com.neuedu.po.Sorder;
 import com.neuedu.service.RefundService;
@@ -17,6 +19,7 @@ import com.neuedu.vo.VOutputFreelistenbook;
 
 @Controller
 public class RefundHandler {
+	private static final int pageSize = 10;
 	@Autowired
 	RefundService refundService;
 	
@@ -33,12 +36,12 @@ public class RefundHandler {
 	@RequestMapping(value = "refund/showRefund.action")
 	@ResponseBody
 	public List<Sorder> showRefund(int qid) throws Exception {
-		return refundService.showRefund(qid);
+		return sorderService.showRefund(qid);
 	}
 	
 	@RequestMapping(value = "refund/showRefundByOthers.action")
 	@ResponseBody
-	public List<Sorder> showRefundByOthers(String jsonData) throws Exception {
+	public PageInfo<Sorder> showRefundByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
 		
 		if(vis.getStatus()=="")
@@ -47,12 +50,19 @@ public class RefundHandler {
 			vis.setStartTime(null);
 		if(vis.getEndTime()=="")
 			vis.setEndTime(null);
-		return sorderService.showRefundByOthers(vis);
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showRefundByOthers(vis));
 	}
 	
 	@RequestMapping(value = "refund/dealRefund.action")
 	@ResponseBody
 	public boolean dealRefund(int oid) throws Exception {
 		return refundService.editRefund(oid);
+	}
+	@RequestMapping(value = "refund/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<Sorder> showSorderPageByQid(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showRefund(qid));
 	}
 }

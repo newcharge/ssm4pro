@@ -36,7 +36,9 @@
 	
 	<select id="showFreelistenByBranchId" resultType="Freelisten">
 		select * from freelisten
-		where branchid = #{branchid}
+		where qid = #{qid}
+		and branchid = #{branchid}
+		
 	</select>
 	
 	<select id="findLastThree" resultType="Freelisten">
@@ -45,5 +47,11 @@
 		where qid = #{qid}
 		order by id desc
 		limit 3
+	</select>
+	
+	<select id="showFreelistenAmount" resultType="int">
+		select count(id)
+		from freelisten
+		where qid = #{qid}
 	</select>
 </mapper>

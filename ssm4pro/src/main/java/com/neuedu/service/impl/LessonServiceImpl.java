@@ -12,6 +12,7 @@ import com.neuedu.po.Lesson;
 import com.neuedu.po.Lessonbranch;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
+import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 @Service
@@ -83,9 +84,9 @@ public class LessonServiceImpl implements LessonService {
 
 	@Transactional
 	@Override
-	public List<Lesson> showLessonByBranchId(int branchid) throws Exception {
+	public List<Lesson> showLessonByBranchId(VInputLessonB vilb) throws Exception {
 		// TODO Auto-generated method stub
-		return lessonDao.findAllByBranchid(branchid);
+		return lessonDao.findAllByBranchid(vilb);
 	}
 
 	@Transactional
@@ -100,5 +101,11 @@ public class LessonServiceImpl implements LessonService {
 	public VOutputLesson getLessonById(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return lessonDao.findById(id);
+	}
+	
+	@Transactional
+	@Override
+	public int showLessonAmount(int qid) throws Exception {
+		return lessonDao.showLessonAmount(qid);
 	}
 }

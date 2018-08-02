@@ -1,4 +1,4 @@
-package com.neuedu.po;
+ package com.neuedu.po;
 import org.apache.ibatis.type.Alias;
 
 @Alias("User")
