@@ -13,7 +13,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.neuedu.po.Message;
-import com.neuedu.po.Messageimg;
 import com.neuedu.po.Messagelike;
 import com.neuedu.po.Messagereply;
 import com.neuedu.service.MessageService;
@@ -33,13 +32,10 @@ public class MessageServiceImplTest {
 		Message message = new Message();
 		message.setMtitle("test-title");
 		message.setQid(1);
-		Messageimg img_1 = new Messageimg();
-		img_1.setImgurl("test-url-1");
-		Messageimg img_2 = new Messageimg();
-		img_2.setImgurl("test-url-2");
-		Messageimg img_3 = new Messageimg();
-		img_3.setImgurl("test-url-3");
-		List<Messageimg> imgList = Arrays.asList(img_1, img_2, img_3);
+		String img_1 = "test-url-1";
+		String img_2 = "test-url-2";
+		String img_3 = "test-url-3";
+		List<String> imgList = Arrays.asList(img_1, img_2, img_3);
 		VInputMessage vimessage = new VInputMessage();
 		vimessage.setMessage(message);
 		vimessage.setImgList(imgList);
@@ -82,11 +78,9 @@ public class MessageServiceImplTest {
 	public void testEditMessage() throws Exception {
 		VInputMessage vimessage = new VInputMessage();
 		Message message = new Message();
-		Messageimg img_1 = new Messageimg();
-		img_1.setImgurl("test1-png");
-		Messageimg img_2 = new Messageimg();
-		img_2.setImgurl("test2-png");
-		List<Messageimg> imgList = Arrays.asList(img_1, img_2);
+		String img_1 = "test1-png";
+		String img_2 = "test2-png";
+		List<String> imgList = Arrays.asList(img_1, img_2);
 		message.setMid(3);
 		message.setMtitle("test-another-title");
 		vimessage.setMessage(message);

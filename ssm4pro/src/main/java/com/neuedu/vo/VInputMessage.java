@@ -3,7 +3,6 @@ package com.neuedu.vo;
 import java.util.List;
 
 import com.neuedu.po.Message;
-import com.neuedu.po.Messageimg;
 
 public class VInputMessage 
 {

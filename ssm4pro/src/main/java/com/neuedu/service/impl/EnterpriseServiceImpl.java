@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.EnterpriseDao;
 import com.neuedu.dao.SwiperDao;
 import com.neuedu.po.Enterprise;
-import com.neuedu.po.Messageimg;
 import com.neuedu.po.Swiper;
 import com.neuedu.service.EnterpriseService;
 import com.neuedu.vo.VInputEnterprise;

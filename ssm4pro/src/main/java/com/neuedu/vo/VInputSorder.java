@@ -1,7 +1,5 @@
 package com.neuedu.vo;
 
-import java.util.Arrays;
-
 public class VInputSorder 
 {
 	private Integer oid;

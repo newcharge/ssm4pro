@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.neuedu.po.Lesson;
 import com.neuedu.vo.VInputLesson;
-import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 public interface LessonService {
