@@ -30,10 +30,5 @@
 	<delete id="deleteAddress">
 		delete from address where id = #{id}
 	</delete>
-	
-	<select id="showAddressById" resultType="Address">
-		select *
-		from address
-		where id = #{id}
-	</select>
+
 </mapper>

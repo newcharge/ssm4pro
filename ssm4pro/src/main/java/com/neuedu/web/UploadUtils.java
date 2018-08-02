@@ -17,7 +17,7 @@ public class UploadUtils {
 
 	@RequestMapping(value = "upload.action",produces="application/json;charset=utf-8")
 	@ResponseBody
-		path =  (new Date().getTime()) + file.getOriginalFilename();
+		//path =  (new Date().getTime()) + file.getOriginalFilename();
 	public responsejson upload(HttpServletRequest request, MultipartFile file) throws Exception {
 		String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 		Path filepath = Paths.get(request.getServletContext().getRealPath("/")).getParent().resolve("prodata/uploads");
