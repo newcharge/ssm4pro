@@ -130,4 +130,10 @@ public class MessageServiceImpl implements MessageService {
 		// TODO Auto-generated method stub
 		return messageDao.findAllByQid(qid);
 	}
+
+	@Override
+	public List<Messagelike> findAllLikeByMid(int mid) throws Exception {
+		// TODO Auto-generated method stub
+		return messagelikeDao.findAllByMid(mid);
+	}
 }

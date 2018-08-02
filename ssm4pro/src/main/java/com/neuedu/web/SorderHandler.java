@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.po.Sorder;
 import com.neuedu.service.SorderService;
+import com.neuedu.utils.JsonUtils;
 import com.neuedu.vo.VInputRefund;
 import com.neuedu.vo.VInputSorder;
 
@@ -36,11 +37,11 @@ public class SorderHandler {
 	public List<Sorder> showSorderByOthers(String jsonData) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
 		
-		if(vis.getStatus()=="")
+		if(vis.getStatus() == "")
 			vis.setStatus(null);
-		if(vis.getStartTime()=="")
+		if(vis.getStartTime() == "")
 			vis.setStartTime(null);
-		if(vis.getEndTime()=="")
+		if(vis.getEndTime() == "")
 			vis.setEndTime(null);
 		return sorderService.showSorderByOthers(vis);
 	}

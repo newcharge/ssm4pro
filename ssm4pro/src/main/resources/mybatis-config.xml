@@ -22,6 +22,7 @@
 		<mapper resource="mapper/MessageMapper.xml"/>
 		<mapper resource="mapper/MessagereplyMapper.xml"/>
 		<mapper resource="mapper/RefundMapper.xml"/>
+		<mapper resource="mapper/SignMapper.xml"/>
 		<mapper resource="mapper/SorderMapper.xml"/>
 		<mapper resource="mapper/SwiperMapper.xml"/>
 		<mapper resource="mapper/TeacherMapper.xml"/>

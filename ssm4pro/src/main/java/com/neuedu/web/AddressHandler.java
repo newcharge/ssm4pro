@@ -21,4 +21,10 @@ public class AddressHandler {
 	public List<Address> showAll(int qid) throws Exception {
 		return addressService.showAddress(qid);
 	}
+	
+	@RequestMapping(value = "addr/showAddressById.action")
+	@ResponseBody
+	public Address showAddressById(int id) throws Exception {
+		return addressService.showAddressById(id);
+	}
 }

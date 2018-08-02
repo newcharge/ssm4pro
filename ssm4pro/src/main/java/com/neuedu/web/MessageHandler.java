@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.neuedu.service.MessageService;
-import com.neuedu.vo.VInputMessage;
 import com.neuedu.po.Messagelike;
 import com.neuedu.po.Messagereply;
+import com.neuedu.service.MessageService;
+import com.neuedu.utils.JsonUtils;
+import com.neuedu.vo.VInputMessage;
 import com.neuedu.vo.VOutputMessage;
 
 @Controller
@@ -62,5 +63,11 @@ public class MessageHandler {
 	public boolean addReply(String jsonData) throws Exception {
 		Messagereply reply = JsonUtils.jsonToPojo(jsonData, Messagereply.class);
 		return messageService.addReply(reply);
+	}
+	
+	@RequestMapping(value = "msg/findAllLikeByMid.action")
+	@ResponseBody
+	public List<Messagelike> findAllLikeByMid(int mid) throws Exception {
+		return messageService.findAllLikeByMid(mid);
 	}
 }
