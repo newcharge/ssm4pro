@@ -76,5 +76,7 @@ dependencies {
 	
 	//pagehelper
 	compile 'com.github.pagehelper:pagehelper:5.1.4'
+	
+	//jedis
+	compile 'redis.clients:jedis:2.9.0'
 }
-

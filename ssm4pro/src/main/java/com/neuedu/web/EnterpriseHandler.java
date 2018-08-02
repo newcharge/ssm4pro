@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.neuedu.po.Teacher;
 import com.neuedu.service.EnterpriseService;
 import com.neuedu.vo.VInputEnterprise;
 import com.neuedu.vo.VOutputEnterprise;

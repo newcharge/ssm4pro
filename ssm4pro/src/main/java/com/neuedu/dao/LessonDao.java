@@ -3,7 +3,6 @@ package com.neuedu.dao;
 import java.util.List;
 
 import com.neuedu.po.Lesson;
-import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 public interface LessonDao {
