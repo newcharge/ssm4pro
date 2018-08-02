@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Lesson;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
+import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 @Controller
@@ -68,9 +69,15 @@ public class LessonHandler {
 	
 	@RequestMapping(value = "lesson/showLessonByBranch.action")
 	@ResponseBody
-	public List<Lesson> showLessonByBranch(int branchid) throws Exception {
-		System.out.println(branchid);
-		return lessonService.showLessonByBranchId(branchid);
+	public PageInfo<Lesson> showLessonByBranch(String jsonData,int pageNum) throws Exception {
+		System.out.println("This is lesoonbybranch's json");
+		System.out.println(jsonData);
+		System.out.println(pageNum);
+		VInputLessonB vilb = JsonUtils.jsonToPojo(jsonData, VInputLessonB.class);
+		System.out.println(vilb.getQid());
+		System.out.println(vilb.getBranchid());
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(lessonService.showLessonByBranchId(vilb));
 	}
 	@RequestMapping(value = "lesson/showAllByPage.action")
 	@ResponseBody

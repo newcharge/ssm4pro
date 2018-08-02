@@ -68,11 +68,11 @@ public class FreelistenServiceImpl implements FreelistenService {
 	
 	@Transactional
 	@Override
-	public List<Freelisten> showFreelistenByBranchId(int branchid) throws Exception {
+	public List<Freelisten> showFreelistenByBranchId(Freelisten freelisten) throws Exception {
 		// TODO Auto-generated method stub
 		List<Freelisten> list;
 
-		list = freelistenDao.showFreelistenByBranchId(branchid);
+		list = freelistenDao.showFreelistenByBranchId(freelisten);
 		return list;
 		
 	}
@@ -83,5 +83,10 @@ public class FreelistenServiceImpl implements FreelistenService {
 		// TODO Auto-generated method stub
 		return freelistenDao.findLastThree(qid);
 	}
-
+	
+	@Transactional
+	@Override
+	public int showFreelistenAmount(int qid) throws Exception {
+		return freelistenDao.showFreelistenAmount(qid);
+	}
 }

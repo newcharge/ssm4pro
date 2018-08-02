@@ -36,16 +36,21 @@ public class SorderHandler {
 	
 	@RequestMapping(value = "sorder/showSorderByOthers.action")
 	@ResponseBody
-	public List<Sorder> showSorderByOthers(String jsonData) throws Exception {
+	public PageInfo<Sorder> showSorderByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
-		
+		System.out.println(vis);
 		if(vis.getStatus()=="")
 			vis.setStatus(null);
 		if(vis.getStartTime()=="")
 			vis.setStartTime(null);
 		if(vis.getEndTime()=="")
 			vis.setEndTime(null);
-		return sorderService.showSorderByOthers(vis);
+		System.out.println(vis.getOid());
+		System.out.println(vis.getStatus());
+		System.out.println(vis.getStartTime());
+		System.out.println(vis.getEndTime());
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showSorderByOthers(vis));
 	}
 	
 	@RequestMapping(value = "sorder/showHeXiao.action")
@@ -57,16 +62,18 @@ public class SorderHandler {
 	
 	@RequestMapping(value = "sorder/showHeXiaoByOthers.action")
 	@ResponseBody
-	public List<Sorder> showHeXiaoByOthers(String jsonData) throws Exception {
+	public PageInfo<Sorder> showHeXiaoByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
-		
+		System.out.println(jsonData);
+		System.out.println(pageNum);
 		if(vis.getStatus()=="")
 			vis.setStatus(null);
 		if(vis.getStartTime()=="")
 			vis.setStartTime(null);
 		if(vis.getEndTime()=="")
 			vis.setEndTime(null);
-		return sorderService.showHeXiaoByOthers(vis);
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showHeXiaoByOthers(vis));
 	}
 	
 	@RequestMapping(value = "sorder/dealHeXiao.action")
@@ -113,5 +120,11 @@ public class SorderHandler {
 	public PageInfo<Sorder> showSorderPageByQid(int qid, int pageNum) throws Exception {
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(sorderService.showSorder(qid));
+	}
+	@RequestMapping(value = "order/showHexiaoByPage.action")
+	@ResponseBody
+	public PageInfo<Sorder> showHexiaoByPageByQid(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showHeXiao(qid));
 	}
 }
