@@ -14,6 +14,6 @@ public interface FreelistenDao
 	public Freelisten showFreelistenById(int id) throws Exception;
 	public List<Freelisten> showFreelisten(int qid) throws Exception;
 	public List<Freelisten> findLastThree(int qid) throws Exception;
-	public List<Freelisten> showFreelistenByBranchId(Freelisten freelisten) throws Exception;
+	public List<Freelisten> showFreelistenByBranchId(int branchid) throws Exception;
 	public int showFreelistenAmount(int qid) throws Exception;
 }

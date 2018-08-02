@@ -39,17 +39,26 @@ public class FreelistenHandler {
 	
 	@RequestMapping(value = "freelisten/showFreelisten.action")
 	@ResponseBody
-	public PageInfo<Freelisten> showFreelisten(int qid) throws Exception {
+	public List<Freelisten> showFreelisten(int qid) throws Exception {
+		return freelistenService.showFreelisten(qid);
+	}
+	@RequestMapping(value = "freelisten/showFreelistenByPage.action")
+	@ResponseBody
+	public PageInfo<Freelisten> showFreelistenByPage(int qid) throws Exception {
 		return PageInfo.of(freelistenService.showFreelisten(qid));
 	}
 	
 	@RequestMapping(value = "freelisten/showFreelistenByBranch.action")
 	@ResponseBody
-	public PageInfo<Freelisten> showFreelistenByBranch(String jsonData) throws Exception {
-		Freelisten freelisten = JsonUtils.jsonToPojo(jsonData, Freelisten.class);
-		System.out.println(freelisten.getBranchid());
-		System.out.println(freelisten.getQid());
-		return PageInfo.of(freelistenService.showFreelistenByBranchId(freelisten));
+	public List<Freelisten> showFreelistenByBranch(int branchid) throws Exception {
+		System.out.println(branchid);
+		return freelistenService.showFreelistenByBranchId(branchid);
+	}
+	@RequestMapping(value = "freelisten/showFreelistenByBranchByPage.action")
+	@ResponseBody
+	public PageInfo<Freelisten> showFreelistenByBranchByPage(int branchid) throws Exception {
+		System.out.println(branchid);
+		return PageInfo.of(freelistenService.showFreelistenByBranchId(branchid));
 	}
 	
 	@RequestMapping(value = "freelisten/showFreelistenById.action")

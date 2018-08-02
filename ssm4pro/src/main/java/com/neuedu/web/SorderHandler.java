@@ -36,6 +36,18 @@ public class SorderHandler {
 	
 	@RequestMapping(value = "sorder/showSorderByOthers.action")
 	@ResponseBody
+	public List<Sorder> showSorderByOthers(String jsonData) throws Exception {
+		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
+		if(vis.getStatus()=="")
+			vis.setStatus(null);
+		if(vis.getStartTime()=="")
+			vis.setStartTime(null);
+		if(vis.getEndTime()=="")
+			vis.setEndTime(null);
+		return sorderService.showSorderByOthers(vis);
+	}
+	@RequestMapping(value = "sorder/showSorderByOthersByPage.action")
+	@ResponseBody
 	public PageInfo<Sorder> showSorderByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
 		System.out.println(vis);
@@ -61,6 +73,18 @@ public class SorderHandler {
 	}
 	
 	@RequestMapping(value = "sorder/showHeXiaoByOthers.action")
+	@ResponseBody
+	public List<Sorder> showHeXiaoByOthers(String jsonData) throws Exception {
+		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
+		if(vis.getStatus()=="")
+			vis.setStatus(null);
+		if(vis.getStartTime()=="")
+			vis.setStartTime(null);
+		if(vis.getEndTime()=="")
+			vis.setEndTime(null);
+		return sorderService.showHeXiaoByOthers(vis);
+	}
+	@RequestMapping(value = "sorder/showHeXiaoByOthersByPage.action")
 	@ResponseBody
 	public PageInfo<Sorder> showHeXiaoByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);

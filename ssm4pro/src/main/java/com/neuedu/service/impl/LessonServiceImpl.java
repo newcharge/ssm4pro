@@ -84,9 +84,9 @@ public class LessonServiceImpl implements LessonService {
 
 	@Transactional
 	@Override
-	public List<Lesson> showLessonByBranchId(VInputLessonB vilb) throws Exception {
+	public List<Lesson> showLessonByBranchId(int branchid) throws Exception {
 		// TODO Auto-generated method stub
-		return lessonDao.findAllByBranchid(vilb);
+		return lessonDao.findAllByBranchid(branchid);
 	}
 
 	@Transactional

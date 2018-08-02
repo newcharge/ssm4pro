@@ -23,7 +23,12 @@ public class FreelistenbookHandler {
 
 	@RequestMapping(value = "freelistenbook/showFreelistenbook.action")
 	@ResponseBody
-	public PageInfo<VOutputFreelistenbook> showFreelistenbook(int qid) throws Exception {
+	public List<VOutputFreelistenbook> showFreelistenbook(int qid) throws Exception {
+		return freelistenbookService.showFreelistenbook(qid);
+	}
+	@RequestMapping(value = "freelistenbook/showFreelistenbookByPage.action")
+	@ResponseBody
+	public PageInfo<VOutputFreelistenbook> showFreelistenbookByPage(int qid) throws Exception {
 		return PageInfo.of(freelistenbookService.showFreelistenbook(qid));
 	}
 	

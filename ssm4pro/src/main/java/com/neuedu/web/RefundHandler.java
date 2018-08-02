@@ -41,6 +41,19 @@ public class RefundHandler {
 	
 	@RequestMapping(value = "refund/showRefundByOthers.action")
 	@ResponseBody
+	public List<Sorder> showRefundByOthers(String jsonData) throws Exception {
+		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
+		
+		if(vis.getStatus()=="")
+			vis.setStatus(null);
+		if(vis.getStartTime()=="")
+			vis.setStartTime(null);
+		if(vis.getEndTime()=="")
+			vis.setEndTime(null);
+		return sorderService.showRefundByOthers(vis);
+	}
+	@RequestMapping(value = "refund/showRefundByOthersByPage.action")
+	@ResponseBody
 	public PageInfo<Sorder> showRefundByOthers(String jsonData,int pageNum) throws Exception {
 		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
 		

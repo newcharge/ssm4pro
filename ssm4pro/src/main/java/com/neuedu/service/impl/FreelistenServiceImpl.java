@@ -68,11 +68,11 @@ public class FreelistenServiceImpl implements FreelistenService {
 	
 	@Transactional
 	@Override
-	public List<Freelisten> showFreelistenByBranchId(Freelisten freelisten) throws Exception {
+	public List<Freelisten> showFreelistenByBranchId(int branchid) throws Exception {
 		// TODO Auto-generated method stub
 		List<Freelisten> list;
 
-		list = freelistenDao.showFreelistenByBranchId(freelisten);
+		list = freelistenDao.showFreelistenByBranchId(branchid);
 		return list;
 		
 	}

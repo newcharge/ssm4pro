@@ -36,8 +36,7 @@
 	
 	<select id="showFreelistenByBranchId" resultType="Freelisten">
 		select * from freelisten
-		where qid = #{qid}
-		and branchid = #{branchid}
+		where branchid = #{branchid}
 		
 	</select>
 	
