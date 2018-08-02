@@ -56,15 +56,11 @@ public class FreelistenbookServiceImplTest {
 
 	}
 
-	@Ignore
 	@Test
 	public void testShowFreelistenbookByOthers() throws Exception {
 		VInputFreelistenbook vif = new VInputFreelistenbook();
 		vif.setQid(1);
-		vif.setId(9);
-		vif.setStatus("待处理");
-		vif.setStarttime("2018-05-26 00:00:01");
-		vif.setEndtime("2018-05-26 23:00:01");
+		vif.setId(8);
 		freelistenbookService.showFreelistenbookByOthers(vif).forEach(System.out::println);
 
 

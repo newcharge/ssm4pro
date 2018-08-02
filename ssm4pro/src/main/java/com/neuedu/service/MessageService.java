@@ -18,7 +18,7 @@ public interface MessageService
 	public boolean deleteLike(Messagelike like) throws Exception;
 	
 	public boolean editMessage(VInputMessage vimessage) throws Exception;
-	
+	public List<Messagelike> findAllLikeByMid(int mid) throws Exception;
 	public List<VOutputMessage> showMessageByQid(int qid) throws Exception;
 	
 }

@@ -58,6 +58,7 @@
 	<select id="findLastThree" resultType="Lesson">
 		select *
 		from lesson
+		where qid = #{qid}
 		order by lid desc
 		limit 3
 	</select>

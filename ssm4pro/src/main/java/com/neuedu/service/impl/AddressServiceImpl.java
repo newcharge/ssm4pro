@@ -47,4 +47,10 @@ public class AddressServiceImpl implements AddressService {
 	
 	
 
+	@Override
+	public Address showAddressById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return addressDao.showAddressById(id);
+	}
+
 }
