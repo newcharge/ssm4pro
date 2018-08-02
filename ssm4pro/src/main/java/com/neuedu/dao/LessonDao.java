@@ -3,6 +3,7 @@ package com.neuedu.dao;
 import java.util.List;
 
 import com.neuedu.po.Lesson;
+import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 public interface LessonDao {
@@ -13,4 +14,5 @@ public interface LessonDao {
 	public List<Lesson> findAllByBranchid(int branchid) throws Exception;
 	public List<Lesson> findLastThree(int qid) throws Exception;
 	public VOutputLesson findById(int lid) throws Exception;
+	public int showLessonAmount(int qid) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.neuedu.vo;
 
+import java.util.Arrays;
+
 public class VInputSorder 
 {
 	private Integer oid;
@@ -15,6 +17,12 @@ public class VInputSorder
 	private String transactionId;
 	private String nickname;
 	private String tel;
+	
+//	@Override
+//    public String toString() {
+//		return String.join("_", Arrays.asList(oid.toString(), String.valueOf(qid), status, startTime, endTime));
+//	}
+	
 	public Integer getOid() {
 		return oid;
 	}

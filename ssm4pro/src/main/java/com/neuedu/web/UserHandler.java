@@ -14,9 +14,30 @@ public class UserHandler {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "usr/showAll.action")
+	@RequestMapping(value = "usr/login.action")
 	@ResponseBody
-	public boolean valid(User user) throws Exception {
-		return userService.valid(user);
+	public Integer valid(String jsonData) throws Exception {
+		User user = JsonUtils.jsonToPojo(jsonData, User.class);
+		System.out.println(user);
+		System.out.println("fanhui:"+userService.valid(user));
+		int back;
+		if(userService.valid(user)==null)
+		{
+			back = 0;
+		}
+		else
+			back = userService.valid(user);
+		return back;
+	}
+	
+	@RequestMapping(value = "usr/register.action")
+	@ResponseBody
+	public boolean register(String jsonData) throws Exception {
+		User user = JsonUtils.jsonToPojo(jsonData, User.class);
+		System.out.println(user);
+		boolean flag = userService.register(user);
+		System.out.println("fanhui:" + flag);
+		
+		return flag;
 	}
 }

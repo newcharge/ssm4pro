@@ -83,5 +83,10 @@ public class FreelistenServiceImpl implements FreelistenService {
 		// TODO Auto-generated method stub
 		return freelistenDao.findLastThree(qid);
 	}
-
+	
+	@Transactional
+	@Override
+	public int showFreelistenAmount(int qid) throws Exception {
+		return freelistenDao.showFreelistenAmount(qid);
+	}
 }

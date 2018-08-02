@@ -35,7 +35,6 @@
 		where
 		freelistenbook.fid = freelisten.id
 		and freelistenbook.fid in (
-
 		select id
 		from freelisten
 		where qid = #{qid})
@@ -79,4 +78,14 @@
 		and tel = #{tel}
 	</select>
 
+	<select id="showFreelistenbookAmount" resultType="int">
+		select count(id)
+		from freelistenbook
+		where fid in (
+		select id
+		from freelisten
+		where qid =
+		#{qid})
+	</select>
+	
 </mapper>

@@ -2,6 +2,8 @@ package com.neuedu.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.neuedu.po.Freelisten;
 
 public interface FreelistenDao 
@@ -13,5 +15,5 @@ public interface FreelistenDao
 	public List<Freelisten> showFreelisten(int qid) throws Exception;
 	public List<Freelisten> findLastThree(int qid) throws Exception;
 	public List<Freelisten> showFreelistenByBranchId(int branchid) throws Exception;
-
+	public int showFreelistenAmount(int qid) throws Exception;
 }

@@ -78,6 +78,12 @@ public class SorderServiceImpl implements SorderService{
 	
 	@Transactional
 	@Override
+	public List<Sorder> showRefund(int qid) throws Exception {
+		return sorderDao.showRefund(qid);
+	}
+	
+	@Transactional
+	@Override
 	public List<Sorder> showRefundByOthers(VInputSorder vis) throws Exception {
 		// TODO Auto-generated method stub
 		return sorderDao.showRefundByOthers(vis);
@@ -94,6 +100,7 @@ public class SorderServiceImpl implements SorderService{
 	@Override
 	public List<Sorder> showSorderByOthers(VInputSorder vis) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println(vis.getStatus());
 		return sorderDao.showSorderByOthers(vis);
 	}
 
@@ -103,9 +110,25 @@ public class SorderServiceImpl implements SorderService{
 		// TODO Auto-generated method stub
 		return sorderDao.showSorderByEle(sorder);
 	}
+	
+	@Transactional
+	@Override
+	public int showSorderAmount(int qid) throws Exception {
+		return sorderDao.showSorderAmount(qid);
+		
+	}
+	
+	@Transactional
+	@Override
+	public double showPaidFee(int qid) throws Exception {
+		return sorderDao.showPaidFee(qid);
+	}
 
-
-
+	@Transactional
+	@Override
+	public double showPayingFee(int qid) throws Exception {
+		return sorderDao.showPayingFee(qid);
+	}
 	
 
 }

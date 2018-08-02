@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.neuedu.po.Lesson;
 import com.neuedu.vo.VInputLesson;
+import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 public interface LessonService {
@@ -14,4 +15,5 @@ public interface LessonService {
 	public List<Lesson> showLessonByBranchId(int branchid) throws Exception;//之前的注释是乱码
 	public List<Lesson> showLastThreeLesson(int qid) throws Exception;
 	public VOutputLesson getLessonById(int id) throws Exception;
+	public int showLessonAmount(int qid) throws Exception;
 }

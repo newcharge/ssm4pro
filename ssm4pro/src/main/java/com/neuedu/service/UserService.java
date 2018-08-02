@@ -4,5 +4,7 @@ import com.neuedu.po.User;
 
 public interface UserService 
 {
-	public boolean valid(User user) throws Exception ;
+	public Integer valid(User user) throws Exception;
+	public boolean register(User user) throws Exception;
+	
 }

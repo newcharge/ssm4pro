@@ -34,8 +34,8 @@
 	
 	<select id="showRefund" resultType="Sorder">
 		select sorder.lid,sorder.oid,sorder.nickname,sorder.tel,sorder.total,sorder.cid,sorder.actual,sorder.status,sorder.ordertime from sorder,refund
-		where sorder.oid=refund.oid
-		and sorder.qid=#{qid}
+		where sorder.oid = refund.oid
+		and sorder.qid = #{qid}
 	</select>
 	
 	<select id="showRefundByOid" resultType="Refund">

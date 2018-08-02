@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.neuedu.dao.EnterpriseDao;
 import com.neuedu.dao.UserDao;
 import com.neuedu.po.User;
 import com.neuedu.service.UserService;
@@ -13,17 +14,21 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	EnterpriseDao enterpriseDao;
 
 	@Transactional
 	@Override
-	public boolean valid(User user) throws Exception {
+	public Integer valid(User user) throws Exception {
 		// TODO Auto-generated method stub
-		if(userDao.valid(user) == null)
-			return false;
-		else
-			return true;
-			
+		return userDao.valid(user);
 	}
 	
-
+	@Transactional
+	@Override
+	public boolean register(User user) throws Exception {
+		boolean flag = (enterpriseDao.addEnterprise() && userDao.register(user));
+		
+		return flag;
+	}
 }

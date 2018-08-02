@@ -26,6 +26,11 @@ public class FreelistenbookHandler {
 	public List<VOutputFreelistenbook> showFreelistenbook(int qid) throws Exception {
 		return freelistenbookService.showFreelistenbook(qid);
 	}
+	@RequestMapping(value = "freelistenbook/showFreelistenbookByPage.action")
+	@ResponseBody
+	public PageInfo<VOutputFreelistenbook> showFreelistenbookByPage(int qid) throws Exception {
+		return PageInfo.of(freelistenbookService.showFreelistenbook(qid));
+	}
 	
 	@RequestMapping(value = "freelistenbook/showFreelistenbookByOthers.action")
 	@ResponseBody
@@ -43,7 +48,6 @@ public class FreelistenbookHandler {
 		System.out.println(vif.getStatus());
 		System.out.println(vif.getStarttime());
 		System.out.println(vif.getEndtime());
-		
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(freelistenbookService.showFreelistenbookByOthers(vif));
 	}

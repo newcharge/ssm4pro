@@ -18,4 +18,6 @@ public interface FreelistenbookService
 	//三种带参查询
 	public List<VOutputFreelistenbook> showFreelistenbookByOthers(VInputFreelistenbook vif) throws Exception;
 	public List<Freelistenbook> showFreelistenbookByQidUser(VInputFreelistenbook vif) throws Exception;
+	
+	public int showFreelistenbookAmount(int qid) throws Exception;
 }
