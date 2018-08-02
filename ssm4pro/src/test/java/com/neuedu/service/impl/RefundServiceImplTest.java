@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.neuedu.po.Refund;
 import com.neuedu.service.RefundService;
 import com.neuedu.vo.VInputRefund;
 
@@ -22,9 +21,7 @@ public class RefundServiceImplTest {
 	@Ignore
 	@Test
 	public void testEditRefund() throws Exception {
-		Refund refund = new Refund();
-		refund.setOid(64);
-		refundService.editRefund(refund);
+		refundService.editRefund(64);
 	}
 
 	@Ignore

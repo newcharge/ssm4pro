@@ -21,7 +21,7 @@ public class SwiperServiceImplTest {
 	SwiperService swiperService;
 	
 	@Test
-	public void testShowSwiperByCategory() {
+	public void testShowSwiperByCategory() throws Exception {
 		Swiper swiper = new Swiper();
 		swiper.setQid(1);
 		swiper.setCategory("A");

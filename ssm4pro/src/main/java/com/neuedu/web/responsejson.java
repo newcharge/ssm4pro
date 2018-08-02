@@ -1,7 +1,5 @@
 package com.neuedu.web;
 
-import java.nio.file.Path;
-
 public class responsejson {
 
 	private	int code;
@@ -13,8 +11,7 @@ public class responsejson {
 	public responsejson(String filename, String filepath) {
 		// TODO Auto-generated constructor stub
 	}
-	public void responsejson(){
-	}
+	
 	public int getCode() {
 		return code;
 	}

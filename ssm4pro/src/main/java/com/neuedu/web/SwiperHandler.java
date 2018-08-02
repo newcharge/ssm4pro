@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.neuedu.po.Swiper;
-import com.neuedu.po.Teacher;
 import com.neuedu.service.SwiperService;
 
 @Controller
