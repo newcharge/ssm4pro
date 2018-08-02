@@ -21,6 +21,6 @@
 	<bean
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
 		id="multipartResolver">
-	<property name="maxUploadSize" value="83886080"></property>
+	<property name="maxUploadSize" value="5242880"></property>
 	</bean>
 </beans>

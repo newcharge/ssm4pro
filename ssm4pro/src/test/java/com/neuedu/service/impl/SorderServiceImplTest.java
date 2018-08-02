@@ -45,7 +45,7 @@ public class SorderServiceImplTest {
 	public void testCreateRefund() throws Exception {
 		VInputRefund vir = new VInputRefund();
 		vir.setOid(64);
-		vir.setRefundReason("浣犵鎴�");
+		vir.setRefundReason("你管我");
 		assertTrue(sorderService.createRefund(vir));
 	}
 
@@ -56,17 +56,16 @@ public class SorderServiceImplTest {
 		
 	}
 
+	@Ignore
 	@Test
 	public void testShowSorderByOthers() throws Exception {
 		VInputSorder vis = new VInputSorder();
 		vis.setQid(1);
-		vis.setOid(null);
+		//vis.setOid(9);
 		vis.setStatus("待付款");
-		vis.setStartTime(null);
-		vis.setEndTime(null);
-		System.out.println(vis.getStartTime());
-		System.out.println(vis.getEndTime());
-		System.out.println(sorderService.showSorderByOthers(vis).size());
+		vis.setStartTime("2018-05-26 00:00:01");
+		vis.setEndTime("2018-05-26 23:00:01");
+		sorderService.showSorderByOthers(vis).forEach(System.out::println);
 
 	}
 

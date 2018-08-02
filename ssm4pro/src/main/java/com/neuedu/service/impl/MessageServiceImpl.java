@@ -1,7 +1,6 @@
 package com.neuedu.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,22 +36,14 @@ public class MessageServiceImpl implements MessageService {
 	/*
 	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#addMessage(com.neuedu.po.Message)
-	 * 鐩墠宸茬粡淇敼瀹屾垚浜�
+	 * 目前已经修改完成了
 	 */
 	@Transactional
 	@Override
 	public boolean addMessage(VInputMessage vimessage) throws Exception {
 		// TODO Auto-generated method stub
 		Message message = vimessage.getMessage();
-		List<String> imgUrls =  vimessage.getImgList();
-		List<Messageimg> imgList;
-		imgList = imgUrls.stream().map(eleUrl -> {
-			Messageimg mImg = new Messageimg();
-			mImg.setMid(message.getMid());
-			mImg.setImgurl(eleUrl);
-			return mImg;
-		}).collect(Collectors.toList());
-		
+		List<Messageimg> imgList = vimessage.getImgList();
 		if(messageDao.addMessage(message)) {
 			imgList.forEach(ele -> ele.setMid(message.getMid()));
 			boolean flag = true;
@@ -84,7 +75,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteMessage(int id) throws Exception {
 		// TODO Auto-generated method stub
-		// Message榛樿绾ц仈鎿嶄綔(D)
+		// Message默认级联操作(D)
 		messageimgDao.deleteImgByMid(id);
 		messagelikeDao.deleteLikeByMid(id);
 		messagereplyDao.deleteReplyByMid(id);
@@ -101,7 +92,7 @@ public class MessageServiceImpl implements MessageService {
 	/*
 	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#deleteLike(int)
-	 * 鐪嬫潵娌￠敊锛屽彧鑳界敤鍊欓�夌爜浜�
+	 * 看来没错，只能用候选码了
 	 */
 	@Transactional
 	@Override
@@ -113,26 +104,14 @@ public class MessageServiceImpl implements MessageService {
 	/*
 	 * (non-Javadoc)
 	 * @see com.neuedu.service.MessageService#editMessage(com.neuedu.po.Message)
-	 * 鐩墠宸茬粡淇敼瀹屾垚浜�
+	 * 目前已经修改完成了
 	 */
 	@Transactional
 	@Override
 	public boolean editMessage(VInputMessage vimessage) throws Exception {
 		// TODO Auto-generated method stub
 		Message message = vimessage.getMessage();
-		
-		
-		List<String> imgUrls =  vimessage.getImgList();
-		System.out.println(message);
-		System.out.println(imgUrls);
-		List<Messageimg> imgList;
-		imgList = imgUrls.stream().map(eleUrl -> {
-			Messageimg mImg = new Messageimg();
-			mImg.setMid(message.getMid());
-			mImg.setImgurl(eleUrl);
-			return mImg;
-		}).collect(Collectors.toList());
-		
+		List<Messageimg> imgList = vimessage.getImgList();
 		imgList.forEach(img -> img.setMid(message.getMid()));
 		if(messageDao.editMessage(message)) {
 			boolean flag = true;

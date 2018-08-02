@@ -18,12 +18,6 @@
 		</selectKey>
 	</insert>
 	
-	<select id="showLessonAmount" resultType="int">
-		select count(lid)
-		from lesson
-		where qid = #{qid}
-	</select>
-	
 	<update id="updateLesson">
 		update lesson set
 			lname = #{lname},
@@ -53,7 +47,6 @@
 			from lessonbranch
 			where branchid = #{branchid}
 		)
-		and qid = #{qid}
 	</select>
 	
 	<select id="findLastThree" resultType="Lesson">

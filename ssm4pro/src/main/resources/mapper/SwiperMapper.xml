@@ -15,10 +15,5 @@
 		insert into swiper (qid, imgurl, category)
 		values(#{qid}, #{imgurl}, #{category})
 	</insert>
-	
-	<delete id="deleteAByQid">
-		delete from swiper
-		where qid = #{qid}
-		and category = 'A'
-	</delete>
+
 </mapper>

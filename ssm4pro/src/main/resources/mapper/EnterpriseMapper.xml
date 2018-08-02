@@ -9,18 +9,4 @@
 		where
 		qid = #{qid}
 	</select>
-	
-	<update id="editEnterprise">
-		update enterprise set
-			name = #{name},
-			videopath = #{videopath},
-			introduction = #{introduction},
-			jczs = #{jczs}
-		where qid = #{qid}
-	</update>
-	
-	<insert id="addEnterprise" useGeneratedKeys="true" keyProperty="qid">
-       insert into enterprise ()
-       values ()
-    </insert>  
 </mapper>

@@ -64,12 +64,6 @@
 		</if>
 	</select>
 	
-	<select id="showRefund" resultType="Sorder">
-		select * from sorder
-		where qid = #{qid}
-		and (status = '已退款' or status = '退款中')
-	</select>
-	
 	<select id="showRefundByOthers" resultType="Sorder">
 		select * from sorder
 		where qid = #{qid}
@@ -100,25 +94,5 @@
 		and openid = #{openid}
 		order by oid desc
 	</select>
-	
-	<select id="showSorderAmount" resultType="int">
-		select count(oid)
-		from sorder
-		where qid = #{qid}
-	</select>
-	
-	<select id="showPaidFee" resultType="Double">
-		select ifnull(sum(actual),0)
-		from sorder
-		where qid = #{qid}
-		and (status = '已使用' or status = '已付款')
-	</select>
-	
-	<select id="showPayingFee" resultType="Double">
-		select ifnull(sum(actual),0)
-		from sorder
-		where qid = #{qid}
-		and status = '待付款'
-	</select>
-	
+
 </mapper>

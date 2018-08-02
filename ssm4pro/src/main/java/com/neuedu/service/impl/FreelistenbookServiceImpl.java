@@ -62,11 +62,6 @@ public class FreelistenbookServiceImpl implements FreelistenbookService {
 		// TODO Auto-generated method stub
 		return freelistenbookDao.showFreelistenbookByQidUser(vif);
 	}
-	
-	@Transactional
-	@Override
-	public int showFreelistenbookAmount(int qid) throws Exception {
-		return freelistenbookDao.showFreelistenbookAmount(qid);
-	}
+
 
 }

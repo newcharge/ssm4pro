@@ -17,6 +17,4 @@ public interface FreelistenbookDao {
 	public List<VOutputFreelistenbook> showFreelistenbookByOthers(VInputFreelistenbook vif) throws Exception;
 	
 	public List<Freelistenbook> showFreelistenbookByQidUser(VInputFreelistenbook vif) throws Exception;
-	
-	public int showFreelistenbookAmount(int qid) throws Exception;
 }

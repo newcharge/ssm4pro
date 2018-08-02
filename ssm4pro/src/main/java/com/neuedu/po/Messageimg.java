@@ -9,8 +9,6 @@ public class Messageimg {
 	private int mid;
 	private String imgurl;
 	
-	public Messageimg(){}
-	
 	public String toString() {
 		return id + "_" + mid + "_" + imgurl;
 	}

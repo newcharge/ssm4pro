@@ -25,10 +25,7 @@ public class MessageHandler {
 	
 	@RequestMapping(value = "msg/editMessage.action")
 	@ResponseBody
-	public boolean editMessage(String jsonData) throws Exception {
-		String k = jsonData;
-		System.out.println(k);
-		VInputMessage vim = JsonUtils.jsonToPojo(jsonData, VInputMessage.class);
+	public boolean editMessage(VInputMessage vim) throws Exception {
 		return messageService.editMessage(vim);
 	}
 	
@@ -42,8 +39,6 @@ public class MessageHandler {
 	@RequestMapping(value = "msg/addMessage.action")
 	@ResponseBody
 	public boolean addMessage(String jsonData) throws Exception {
-		String k = jsonData;
-		System.out.println(k);
 		VInputMessage vim = JsonUtils.jsonToPojo(jsonData, VInputMessage.class);
 		return messageService.addMessage(vim);
 	}

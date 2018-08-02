@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.neuedu.po.Lesson;
 import com.neuedu.vo.VInputLesson;
-import com.neuedu.vo.VInputLessonB;
 import com.neuedu.vo.VOutputLesson;
 
 public interface LessonService {
@@ -12,8 +11,7 @@ public interface LessonService {
 	public boolean deleteLesson(int id) throws Exception;
 	public boolean editLesson(VInputLesson vil) throws Exception;
 	public List<Lesson> showLesson(int qid) throws Exception;
-	public List<Lesson> showLessonByBranchId(VInputLessonB vilb) throws Exception;//之前的注释是乱码
+	public List<Lesson> showLessonByBranchId(int branchid) throws Exception;//之前的注释是乱码
 	public List<Lesson> showLastThreeLesson(int qid) throws Exception;
 	public VOutputLesson getLessonById(int id) throws Exception;
-	public int showLessonAmount(int qid) throws Exception;
 }
