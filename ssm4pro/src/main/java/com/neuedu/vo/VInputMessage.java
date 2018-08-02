@@ -7,9 +7,16 @@ import com.neuedu.po.Messageimg;
 
 public class VInputMessage 
 {
+	private int qid;
 	private Message message;
 	private List<Messageimg> imgList;
 	
+	public int getQid() {
+		return qid;
+	}
+	public void setQid(int qid) {
+		this.qid = qid;
+	}
 	public Message getMessage() {
 		return message;
 	}

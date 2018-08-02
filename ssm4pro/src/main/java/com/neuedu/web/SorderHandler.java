@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Sorder;
 import com.neuedu.service.SorderService;
 import com.neuedu.utils.JsonUtils;
@@ -15,6 +17,7 @@ import com.neuedu.vo.VInputSorder;
 
 @Controller
 public class SorderHandler {
+	private static final int pageSize = 10;
 	@Autowired
 	SorderService sorderService;
 
@@ -44,6 +47,34 @@ public class SorderHandler {
 		if(vis.getEndTime() == "")
 			vis.setEndTime(null);
 		return sorderService.showSorderByOthers(vis);
+	}
+	
+	@RequestMapping(value = "sorder/showHeXiao.action")
+	@ResponseBody
+	public List<Sorder> showHeXiao(int qid) throws Exception {
+		System.out.println(qid);
+		return sorderService.showHeXiao(qid);
+	}
+	
+	@RequestMapping(value = "sorder/showHeXiaoByOthers.action")
+	@ResponseBody
+	public List<Sorder> showHeXiaoByOthers(String jsonData) throws Exception {
+		VInputSorder vis = JsonUtils.jsonToPojo(jsonData, VInputSorder.class);
+		
+		if(vis.getStatus()=="")
+			vis.setStatus(null);
+		if(vis.getStartTime()=="")
+			vis.setStartTime(null);
+		if(vis.getEndTime()=="")
+			vis.setEndTime(null);
+		return sorderService.showHeXiaoByOthers(vis);
+	}
+	
+	@RequestMapping(value = "sorder/dealHeXiao.action")
+	@ResponseBody
+	public boolean dealHeXiao(int id) throws Exception {
+		System.out.println(id);
+		return sorderService.dealHeXiao(id);
 	}
 	
 	@RequestMapping(value = "order/addOrder.action")
@@ -77,5 +108,11 @@ public class SorderHandler {
 		VInputRefund vir = JsonUtils.jsonToPojo(jsonData, VInputRefund.class);
 		System.out.println(vir.getRefundReason());
 		return sorderService.createRefund(vir);
+	}
+	@RequestMapping(value = "order/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<Sorder> showSorderPageByQid(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(sorderService.showSorder(qid));
 	}
 }

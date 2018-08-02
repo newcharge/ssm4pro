@@ -27,4 +27,26 @@ public class AddressHandler {
 	public Address showAddressById(int id) throws Exception {
 		return addressService.showAddressById(id);
 	}
+	
+	@RequestMapping(value = "addr/editAddress.action")
+	@ResponseBody
+	public boolean editAddress(String jsonData) throws Exception {
+		Address address = JsonUtils.jsonToPojo(jsonData, Address.class);
+
+		return addressService.editAddress(address);
+	}
+	
+	@RequestMapping(value = "addr/deleteAddress.action")
+	@ResponseBody
+	public boolean deleteAddress(int id) throws Exception {
+		System.out.println(id);
+		return addressService.deleteAddress(id);
+	}
+	
+	@RequestMapping(value = "addr/addAddress.action")
+	@ResponseBody
+	public boolean addAddress(String jsonData) throws Exception {
+		Address address = JsonUtils.jsonToPojo(jsonData, Address.class);
+		return addressService.addAddress(address);
+	}
 }

@@ -23,7 +23,7 @@ public class SwiperServiceImpl implements SwiperService {
 	
 	@Transactional
 	@Override
-	public List<String> showSwiperByCategory(Swiper swiper) {
+	public List<String> showSwiperByCategory(Swiper swiper) throws Exception {
 		// TODO Auto-generated method stub
 		Jedis jedis = JedisAPI.getRedisApi().getRedis("192.168.52.134", 6379);
 		String entry = String.join("-", "swiper", String.valueOf(swiper.getQid()), swiper.getCategory());
@@ -43,5 +43,14 @@ public class SwiperServiceImpl implements SwiperService {
 		}
 		return list;
 	}
+	
+	@Transactional
+	@Override
+	public boolean addSwiper(Swiper swiper) throws Exception {
+		// TODO Auto-generated method stub
+		return swiperDao.addSwiper(swiper);
+	}
+	
+	
 
 }

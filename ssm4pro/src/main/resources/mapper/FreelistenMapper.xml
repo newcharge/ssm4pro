@@ -13,12 +13,12 @@
 	 -->
 	
 	<insert id="addFreelisten" useGeneratedKeys="true" keyProperty="id">
-		insert into freelisten (title,imgurl,fdesc,status,qid,branchid,pubtime) value (#{title},#{imgurl},#{fdesc},#{status},#{qid},#{branchid},#{pubtime})
+		insert into freelisten (title,imgurl,fdesc,status,qid,branchid,pubtime) value (#{title},#{imgurl},#{fdesc},#{status},#{qid},#{branchid},now())
 	</insert>
 	
 	<update id="editFreelisten">
 		update freelisten set
-			title = #{title},imgurl = #{imgurl},fdesc = #{fdesc},status = #{status},qid = #{qid},branchid = #{branchid},pubtime = #{pubtime}
+			title = #{title},imgurl = #{imgurl},fdesc = #{fdesc},status = #{status},qid = #{qid},branchid = #{branchid}
 		where id = #{id}
 	</update>
 	

@@ -64,6 +64,34 @@ public class SorderServiceImpl implements SorderService{
 	
 	@Transactional
 	@Override
+	public List<Sorder> showHeXiao(int qid) throws Exception {
+		// TODO Auto-generated method stub
+		return sorderDao.showHeXiao(qid);
+	}
+	
+	@Transactional
+	@Override
+	public List<Sorder> showHeXiaoByOthers(VInputSorder vis) throws Exception {
+		// TODO Auto-generated method stub
+		return sorderDao.showHeXiaoByOthers(vis);
+	}
+	
+	@Transactional
+	@Override
+	public List<Sorder> showRefundByOthers(VInputSorder vis) throws Exception {
+		// TODO Auto-generated method stub
+		return sorderDao.showRefundByOthers(vis);
+	}
+	
+	@Transactional
+	@Override
+	public boolean dealHeXiao(int oid) throws Exception {
+		// TODO Auto-generated method stub
+		return sorderDao.dealHeXiao(oid);
+	}
+	
+	@Transactional
+	@Override
 	public List<Sorder> showSorderByOthers(VInputSorder vis) throws Exception {
 		// TODO Auto-generated method stub
 		return sorderDao.showSorderByOthers(vis);

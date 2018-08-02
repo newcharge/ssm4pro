@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Messagelike;
 import com.neuedu.po.Messagereply;
 import com.neuedu.service.MessageService;
@@ -16,6 +18,7 @@ import com.neuedu.vo.VOutputMessage;
 
 @Controller
 public class MessageHandler {
+	private static final int pageSize = 10;
 	@Autowired
 	MessageService messageService;
 	
@@ -27,20 +30,22 @@ public class MessageHandler {
 	
 	@RequestMapping(value = "msg/deleteMessage.action")
 	@ResponseBody
-	public boolean deleteMessage(int id) throws Exception {
-		return messageService.deleteMessage(id);
+	public boolean deleteMessage(int mid) throws Exception {
+		System.out.println(mid);
+		return messageService.deleteMessage(mid);
 	}
 	
 	@RequestMapping(value = "msg/addMessage.action")
 	@ResponseBody
-	public boolean addMessage(VInputMessage vim) throws Exception {
+	public boolean addMessage(String jsonData) throws Exception {
+		VInputMessage vim = JsonUtils.jsonToPojo(jsonData, VInputMessage.class);
 		return messageService.addMessage(vim);
 	}
 
 	@RequestMapping(value = "msg/showMessage.action")
 	@ResponseBody
 	public List<VOutputMessage> showMessage(int qid) throws Exception {
-		System.out.println(qid);
+		//System.out.println(qid);
 		return messageService.showMessageByQid(qid);
 	}
 	
@@ -69,5 +74,18 @@ public class MessageHandler {
 	@ResponseBody
 	public List<Messagelike> findAllLikeByMid(int mid) throws Exception {
 		return messageService.findAllLikeByMid(mid);
+	}
+	
+	@RequestMapping(value = "msg/deleteReply.action")
+	@ResponseBody
+	public boolean deleteReply(int id) throws Exception {
+		
+		return messageService.deleteReply(id);
+	}
+	@RequestMapping(value = "msg/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<VOutputMessage> showAllByPage(int qid, int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
+		return PageInfo.of(messageService.showMessageByQid(qid));
 	}
 }

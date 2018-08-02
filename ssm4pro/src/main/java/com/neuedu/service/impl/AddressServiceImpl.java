@@ -34,10 +34,18 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
+	public Address showAddressById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return addressDao.showAddressById(id);
+	}
+
+	@Override
 	public List<Address> showAddress(int qid) throws Exception {
 		// TODO Auto-generated method stub
 		return addressDao.showAddress(qid);
 	}
+	
+	
 
 	@Override
 	public Address showAddressById(int id) throws Exception {
