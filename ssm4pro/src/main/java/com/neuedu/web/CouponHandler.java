@@ -11,8 +11,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Coupon;
 import com.neuedu.service.CouponService;
-import com.neuedu.vo.VInputCoupon;
-import com.neuedu.vo.VOutputCoupon;
 
 @Controller
 public class CouponHandler {

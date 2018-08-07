@@ -3,8 +3,6 @@ package com.neuedu.dao;
 import java.util.List;
 
 import com.neuedu.po.Coupon;
-import com.neuedu.vo.VInputCoupon;
-import com.neuedu.vo.VOutputCoupon;
 
 public interface CouponDao {
 	public List<Coupon> showAll(int qid) throws Exception;

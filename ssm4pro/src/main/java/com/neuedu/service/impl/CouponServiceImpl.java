@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.neuedu.dao.CouponDao;
 import com.neuedu.po.Coupon;
 import com.neuedu.service.CouponService;
-import com.neuedu.vo.VInputCoupon;
-import com.neuedu.vo.VOutputCoupon;
 
 @Service
 public class CouponServiceImpl implements CouponService {
