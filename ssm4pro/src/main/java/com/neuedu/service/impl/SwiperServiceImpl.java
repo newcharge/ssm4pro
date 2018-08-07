@@ -25,12 +25,11 @@ public class SwiperServiceImpl implements SwiperService {
 	@Override
 	public List<String> showSwiperByCategory(Swiper swiper) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = JedisAPI.getRedisApi().getRedis("192.168.52.134", 6379);
+		Jedis jedis = JedisAPI.getRedisApi().getRedis("59.110.137.171", 6379);
 		String entry = String.join("-", "swiper", String.valueOf(swiper.getQid()), swiper.getCategory());
 		Set<String> result = jedis.smembers(entry);
 		List<String> list;
 		if(result != null && !result.isEmpty()) {
-			JedisAPI.getRedisApi().closeRedis(jedis);
 			list = result.stream().collect(Collectors.toList());
 			System.out.println("调用缓存");
 		} else {
@@ -41,6 +40,7 @@ public class SwiperServiceImpl implements SwiperService {
 				jedis.expire(entry, 30);
 			});
 		}
+		JedisAPI.getRedisApi().closeRedis(jedis);
 		return list;
 	}
 	
