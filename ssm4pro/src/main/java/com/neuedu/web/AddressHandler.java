@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Address;
 import com.neuedu.service.AddressService;
 
@@ -21,6 +22,12 @@ public class AddressHandler {
 	public List<Address> showAll(int qid) throws Exception {
 		return addressService.showAddress(qid);
 	}
+	@RequestMapping(value = "addr/showAllByPage.action")
+	@ResponseBody
+	public PageInfo<Address> showAllByPage(int qid) throws Exception {
+		return PageInfo.of(addressService.showAddress(qid));
+	}
+	
 	
 	@RequestMapping(value = "addr/showAddressById.action")
 	@ResponseBody

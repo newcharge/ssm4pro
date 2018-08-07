@@ -12,6 +12,7 @@
 	<!-- 设置映射文件所在的位置 -->
 	<mappers>
 		<mapper resource="mapper/AddressMapper.xml"/>
+		<mapper resource="mapper/CouponMapper.xml"/>
 		<mapper resource="mapper/EnterpriseMapper.xml"/>
 		<mapper resource="mapper/FreelistenbookMapper.xml"/>
 		<mapper resource="mapper/FreelistenMapper.xml"/>
@@ -21,6 +22,7 @@
 		<mapper resource="mapper/MessagelikeMapper.xml"/>
 		<mapper resource="mapper/MessageMapper.xml"/>
 		<mapper resource="mapper/MessagereplyMapper.xml"/>
+		<mapper resource="mapper/PointMapper.xml"/>
 		<mapper resource="mapper/RefundMapper.xml"/>
 		<mapper resource="mapper/SignMapper.xml"/>
 		<mapper resource="mapper/SorderMapper.xml"/>

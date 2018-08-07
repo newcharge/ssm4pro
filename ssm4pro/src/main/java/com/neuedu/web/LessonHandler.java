@@ -75,7 +75,7 @@ public class LessonHandler {
 	@RequestMapping(value = "lesson/showLessonByBranchByPage.action")
 	@ResponseBody
 	public PageInfo<Lesson> showLessonByBranchByPage(int branchid) throws Exception {
-		
+		System.out.println(branchid);
 		return PageInfo.of(lessonService.showLessonByBranchId(branchid));
 	}
 	@RequestMapping(value = "lesson/showAllByPage.action")

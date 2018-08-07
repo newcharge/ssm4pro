@@ -22,8 +22,7 @@
 	<update id="changeFreelistenbookState">
 		update freelistenbook set
 		status = #{status}
-		where id =
-		#{id}
+		where id = #{id}
 	</update>
 
 	<select id="showFreelistenbook" resultType="VOutputFreelistenbook">

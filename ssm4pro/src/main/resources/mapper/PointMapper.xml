@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.PointDao">
+	<select id="showAll" resultType="Point">
+		select * from point
+		where qid = #{qid}
+	</select>
+	
+	<select id="showPointByOpenid" resultType="Point">
+		select * from point
+		where qid = #{qid}
+		<if test="openid != null">
+			and openid = #{openid}
+		</if>
+	</select>
+	
+	<delete id="deletePoint">
+       delete from point
+       where id = #{id}
+    </delete>
+	
+	<update id="editPoint">
+		update point set
+		count = #{count}
+		where id = #{id}
+	</update>
+	
+	<insert id="addPoint" useGeneratedKeys="true" keyProperty="id">
+		insert into point (qid,openid,count)
+		values (#{qid},#{openid},#{count})
+	</insert>
+</mapper>

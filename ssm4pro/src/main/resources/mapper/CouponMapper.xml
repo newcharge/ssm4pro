@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.dao.CouponDao">
+
+	<select id="showAll" resultType="Coupon">
+		select coupon.openid,coupon.cid,coupon.category,coupon.money,coupon.total,coupon.deadline
+		from coupon
+		where coupon.qid = #{qid}
+	</select>
+	
+	<select id="showCouponByOthers" resultType="Coupon">
+		select coupon.openid,coupon.cid,coupon.category,coupon.money,coupon.total,coupon.deadline
+		from coupon
+		where coupon.qid = #{qid}
+		<if test="cid != null">
+			and coupon.cid = #{cid}
+		</if>
+		<if test="openid != null">
+			and coupon.openid = #{openid}
+		</if>
+		<if test="category != null">
+			and coupon.category = #{category}
+		</if>
+	</select>
+	
+	<insert id="addCoupon" useGeneratedKeys="true" keyProperty="cid">
+		insert into coupon
+		(qid,category,money,deadline,openid,gettime) value
+		(#{qid},#{category},#{money},STR_TO_DATE(#{deadline},"%Y-%m-%d"),#{openid},now())
+	</insert>
+	
+	<update id="editCoupon">
+		update coupon set
+			category = #{category},
+			money = #{money},
+			deadline = STR_TO_DATE(#{deadline},"%Y-%m-%d"),
+			openid = #{openid}
+		where cid = #{cid}
+	</update>
+	
+	<delete id="deleteCoupon">
+		delete from coupon where cid = #{cid}
+	</delete>
+	
+	
+
+</mapper>
