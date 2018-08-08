@@ -29,19 +29,17 @@ public class AddressServiceImplTest {
 		address.setLatitude(2.2222);
 		System.out.println(addressService.addAddress(address));
 	}
-
 	@Ignore
 	@Test
 	public void testDeleteAddress() throws Exception {
-		System.out.println(addressService.deleteAddress(4));
+		System.out.println(addressService.deleteAddress(25));
 
 	}
-
 	@Ignore
 	@Test
 	public void testEditAddress() throws Exception {
 		Address address = new Address();
-		address.setId(5);
+		address.setId(28);
 		address.setQid(1);
 		address.setBranch("zzz1c");
 		address.setAddress("add1c");
@@ -51,7 +49,12 @@ public class AddressServiceImplTest {
 		System.out.println(addressService.editAddress(address));
 		
 	}
-
+	@Ignore
+	@Test
+	public void testshowAddressById() throws Exception {
+		
+		System.out.println(addressService.showAddressById(28));
+	}
 	@Ignore
 	@Test
 	public void testShowAddress() throws Exception {

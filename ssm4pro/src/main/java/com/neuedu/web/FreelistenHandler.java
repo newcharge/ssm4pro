@@ -84,4 +84,9 @@ public class FreelistenHandler {
 		return PageInfo.of(freelistenService.showFreelisten(qid));
 	}
 
+	@RequestMapping(value = "freelisten/showTopFreelisten.action")
+	@ResponseBody
+	public List<Freelisten> showTopLesson(int qid, int rank) throws Exception {
+		return freelistenService.showTopLesson(qid, rank);
+	}
 }

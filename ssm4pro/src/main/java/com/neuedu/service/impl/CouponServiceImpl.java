@@ -72,10 +72,9 @@ public class CouponServiceImpl implements CouponService {
 				jedis.lpush(entry, JsonUtils.ObjectToJson(couponi));
 			}
 		}
-		if(rank + 10 - 1 <= count) {
+		if(rank + 10 - 1 < count) {
 			strList = jedis.lrange(entry, rank, rank + 10 - 1);
-		} else if(rank <= count) {
-			System.out.println("!!!");
+		} else if(rank < count) {
 			strList = jedis.lrange(entry, rank, -1);
 		} else {
 			strList = Arrays.asList();

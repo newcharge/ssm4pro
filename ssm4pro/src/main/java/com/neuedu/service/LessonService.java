@@ -15,4 +15,5 @@ public interface LessonService {
 	public List<Lesson> showLastThreeLesson(int qid) throws Exception;
 	public VOutputLesson getLessonById(int id) throws Exception;
 	public int showLessonAmount(int qid) throws Exception;
+	public List<Lesson> showTopLesson(int qid, int rank, int range) throws Exception;
 }

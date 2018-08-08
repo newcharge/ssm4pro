@@ -14,4 +14,5 @@ public interface FreelistenService
 	public List<Freelisten> showLastThreeFreelisten(int qid) throws Exception;
 	public List<Freelisten> showFreelistenByBranchId(int branchid) throws Exception;
 	public int showFreelistenAmount(int qid) throws Exception;
+	public List<Freelisten> showTopLesson(int qid, int rank) throws Exception;
 }

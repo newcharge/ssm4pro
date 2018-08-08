@@ -85,4 +85,10 @@ public class LessonHandler {
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(lessonService.showLesson(qid));
 	}
+	
+	@RequestMapping(value = "lesson/showTopLesson.action")
+	@ResponseBody
+	public List<Lesson> showTopLesson(int qid, int rank, int range) throws Exception {
+		return lessonService.showTopLesson(qid, rank, range);
+	}
 }

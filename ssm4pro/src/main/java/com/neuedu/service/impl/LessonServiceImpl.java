@@ -1,5 +1,7 @@
 package com.neuedu.service.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import com.neuedu.po.Lessonbranch;
 import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
 import com.neuedu.vo.VOutputLesson;
+import com.neuedu.web.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
@@ -114,5 +117,38 @@ public class LessonServiceImpl implements LessonService {
 	@Override
 	public int showLessonAmount(int qid) throws Exception {
 		return lessonDao.showLessonAmount(qid);
+	}
+
+	@Transactional
+	@Override
+	public List<Lesson> showTopLesson(int qid, int rank, int range) throws Exception {
+		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
+		String entry = String.join("-", Arrays.asList("lesson", String.valueOf(qid)));
+		long count = jedis.llen(entry);
+		List<Lesson> list;
+		List<String> strList;
+		if(count == 0) {
+			list = lessonDao.findAllByQid(qid);
+			for(Lesson lesson : list) {
+				jedis.lpush(entry, JsonUtils.ObjectToJson(lesson));
+			}
+		}
+		if(rank + range - 1 < count) {
+			strList = jedis.lrange(entry, rank, rank + range - 1);
+		} else if(rank < count) {
+			strList = jedis.lrange(entry, rank, -1);
+		} else {
+			strList = Arrays.asList();
+		}
+		
+		System.out.println(strList.size());
+		list = new ArrayList<>();
+		for(String couponStr : strList) {
+			list.add(JsonUtils.jsonToPojo(couponStr, Lesson.class));
+		}
+		
+		jedis.close();
+		return list;
 	}
 }
