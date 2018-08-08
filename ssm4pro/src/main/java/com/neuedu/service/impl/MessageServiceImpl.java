@@ -77,7 +77,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean addReply(Messagereply reply) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return messagereplyDao.addReply(reply);
