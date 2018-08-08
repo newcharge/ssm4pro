@@ -25,6 +25,12 @@
 		</if>
 	</select>
 	
+	<select id="showCouponByOpenid" resultType="Coupon">
+		select coupon.openid,coupon.cid,coupon.category,coupon.money,coupon.total,coupon.deadline
+		from coupon
+		where coupon.qid = #{qid} and coupon.openid = #{openid}
+	</select>
+	
 	<insert id="addCoupon" useGeneratedKeys="true" keyProperty="cid">
 		insert into coupon
 		(qid,category,money,deadline,openid,gettime) value

@@ -6,9 +6,9 @@
 
 	<insert id="addSorder" useGeneratedKeys="true" keyProperty="oid">
 		insert into sorder (lid, openid, total, actual, status, ordertime,
-		qid, nickname, tel)
-		values(#{lid}, #{openid}, #{actual}, #{actual}, '待付款', now(), #{qid}, #{nickname},
-		#{tel})
+		qid, nickname, tel,cid)
+		values(#{lid}, #{openid}, #{total}, #{actual}, '待付款', now(), #{qid}, #{nickname},
+		#{tel},#{cid})
 	</insert>
 
 	<update id="changeSorderState">

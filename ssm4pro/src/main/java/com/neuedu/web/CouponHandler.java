@@ -37,6 +37,13 @@ public class CouponHandler {
 		return couponService.showCouponByOthers(coupon);
 	}
 	
+	@RequestMapping(value = "coupon/showCouponByOpenid.action")
+	@ResponseBody
+	public List<Coupon> showCouponByOpenid(String jsonData) throws Exception {
+		Coupon vic = JsonUtils.jsonToPojo(jsonData, Coupon.class);
+		return couponService.showCouponByOpenid(vic);
+	}
+	
 	@RequestMapping(value = "coupon/showCouponByOthersByPage.action")
 	@ResponseBody
 	public PageInfo<Coupon> showCouponByOthersByPage(String jsonData,int pageNum) throws Exception {

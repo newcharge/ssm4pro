@@ -30,6 +30,11 @@ public class CouponServiceImpl implements CouponService {
 	}
 	
 	@Override
+	public List<Coupon> showCouponByOpenid(Coupon vic) throws Exception{
+		return couponDao.showCouponByOpenid(vic);
+	}
+	
+	@Override
 	public boolean addCoupon(Coupon vic) throws Exception {
 		Jedis jedis = new Jedis();
 		jedis.flushAll();

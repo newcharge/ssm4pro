@@ -9,6 +9,7 @@ public interface CouponService {
 	public List<Coupon> showCouponByOthers(Coupon coupon) throws Exception;
 	public boolean addCoupon(Coupon coupon) throws Exception;
 	public boolean editCoupon(Coupon coupon) throws Exception;
+	public List<Coupon> showCouponByOpenid(Coupon coupon) throws Exception;
 	public boolean deleteCoupon(int cid) throws Exception;
 	public List<Coupon> showTopCoupon(Coupon coupon, int rank) throws Exception;
 }
