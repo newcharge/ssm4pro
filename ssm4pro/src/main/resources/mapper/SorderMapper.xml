@@ -121,4 +121,9 @@
 		and status = '待付款'
 	</select>
 	
+	<select id="showSorderById" resultType="Sorder">
+		select * from sorder 
+		where oid=#{oid}
+	</select>
+	
 </mapper>

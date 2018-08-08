@@ -19,6 +19,7 @@ public interface SorderDao {
 	public List<Sorder> showRefund(int qid) throws Exception;
 	public List<Sorder> showRefundByOthers(VInputSorder vis) throws Exception;
 	public boolean dealHeXiao(int oid) throws Exception;
+	public Sorder showSorderById(int oid) throws Exception;
 	public int showSorderAmount(int qid) throws Exception;
 	public double showPaidFee(int qid) throws Exception;
 	public double showPayingFee(int qid) throws Exception;

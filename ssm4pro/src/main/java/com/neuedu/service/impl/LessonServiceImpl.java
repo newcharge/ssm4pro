@@ -39,7 +39,7 @@ public class LessonServiceImpl implements LessonService {
 				lessonbranch.setLid(lesson.getLid());
 				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
-			Jedis jedis = new Jedis();
+			Jedis jedis = new Jedis("59.110.137.171", 6379);
 			jedis.flushAll();
 			jedis.close();
 			return true;
@@ -74,7 +74,7 @@ public class LessonServiceImpl implements LessonService {
 				lessonbranch.setLid(lesson.getLid());
 				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
-			Jedis jedis = new Jedis();
+			Jedis jedis = new Jedis("59.110.137.171", 6379);
 			jedis.flushAll();
 			jedis.close();
 			return true;

@@ -25,7 +25,7 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 		
 		flag = freelistenDao.addFreelisten(freelisten);
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return flag;
@@ -38,7 +38,7 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 		
 		flag = freelistenDao.editFreelisten(freelisten);
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return flag;
@@ -51,7 +51,7 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 
 		flag = freelistenDao.deleteFreelisten(id);
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return flag;
