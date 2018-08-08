@@ -28,7 +28,7 @@ public class SorderServiceImplTest {
 		sorder.setLid(100);
 		sorder.setOpenid("100");
 		sorder.setTotal(100);
-		sorder.setCid("100");
+		sorder.setCid(100);
 		sorder.setActual(100);
 		
 		

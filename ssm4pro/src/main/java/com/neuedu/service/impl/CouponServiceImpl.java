@@ -36,7 +36,7 @@ public class CouponServiceImpl implements CouponService {
 	
 	@Override
 	public boolean addCoupon(Coupon vic) throws Exception {
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return couponDao.addCoupon(vic);
@@ -44,7 +44,7 @@ public class CouponServiceImpl implements CouponService {
 	
 	@Override
 	public boolean editCoupon(Coupon vic) throws Exception {
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return couponDao.editCoupon(vic);
@@ -52,7 +52,7 @@ public class CouponServiceImpl implements CouponService {
 	
 	@Override
 	public boolean deleteCoupon(int cid) throws Exception {
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return couponDao.deleteCoupon(cid);

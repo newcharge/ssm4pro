@@ -23,7 +23,6 @@ public class UploadUtils {
 		System.out.println(filename);
 		System.out.println(filepath.resolve(filename).toString());
 		file.transferTo(Files.createFile(filepath.resolve(filename)).toFile());
-
 		responsejson res = new responsejson();	
 		res.setData(filename);
 		res.setCode(0);

@@ -64,7 +64,7 @@ public class MessageServiceImpl implements MessageService {
 				}
 			}
 			if(flag){
-				Jedis jedis = new Jedis();
+				Jedis jedis = new Jedis("59.110.137.171", 6379);
 				jedis.flushAll();
 				jedis.close();
 				return true;
@@ -87,7 +87,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean addLike(Messagelike like) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return messagelikeDao.addLike(like);
@@ -101,7 +101,7 @@ public class MessageServiceImpl implements MessageService {
 		messageimgDao.deleteImgByMid(id);
 		messagelikeDao.deleteLikeByMid(id);
 		messagereplyDao.deleteReplyByMid(id);
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return messageDao.deleteMessage(id);
@@ -111,7 +111,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteReply(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return messagereplyDao.deleteReplyById(id);
@@ -126,7 +126,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteLike(Messagelike like) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = new Jedis();
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		jedis.flushAll();
 		jedis.close();
 		return messagelikeDao.deleteLike(like);
@@ -163,7 +163,7 @@ public class MessageServiceImpl implements MessageService {
 				messageimgDao.addImg(img);
 			}
 			if(flag){
-				Jedis jedis = new Jedis();
+				Jedis jedis = new Jedis("59.110.137.171", 6379);
 				jedis.flushAll();
 				jedis.close(); 
 				return true;

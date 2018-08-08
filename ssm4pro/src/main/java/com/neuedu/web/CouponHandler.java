@@ -26,7 +26,8 @@ public class CouponHandler {
 	
 	@RequestMapping(value = "coupon/showAllByPage.action")
 	@ResponseBody
-	public PageInfo<Coupon> showAllByPage(int qid) throws Exception {
+	public PageInfo<Coupon> showAllByPage(int qid,int pageNum) throws Exception {
+		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(couponService.showAll(qid));
 	}
 	

@@ -9,7 +9,7 @@ public class Sorder {
 	private int lid;
 	private String openid;
 	private double total;
-	private String cid;
+	private int cid;
 	private double actual;
 	private String status;
 	private String ordertime;//数据库中的datetime类型
@@ -28,7 +28,7 @@ public class Sorder {
 		if (lid != sorder.lid) flag= false;
 		if (!openid.equals(sorder.openid)) flag=false;
 		if (total != sorder.total) flag= false;
-		if (!cid.equals(sorder.cid)) flag=false;
+		if (cid!=sorder.cid) flag=false;
 		if (actual != sorder.actual) flag= false;
 		if (!status.equals(sorder.status)) flag=false;
 		if (!ordertime.equals(sorder.ordertime)) flag=false;
@@ -62,10 +62,10 @@ public class Sorder {
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public String getCid() {
+	public int getCid() {
 		return cid;
 	}
-	public void setCid(String cid) {
+	public void setCid(int cid) {
 		this.cid = cid;
 	}
 	public double getActual() {

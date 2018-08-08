@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.neuedu.dao.CouponDao;
 import com.neuedu.dao.RefundDao;
 import com.neuedu.dao.SorderDao;
 import com.neuedu.po.Refund;
@@ -22,6 +23,9 @@ public class SorderServiceImpl implements SorderService{
 	
 	@Autowired
 	RefundDao refundDao;
+	
+	@Autowired
+	CouponDao couponDao;
 	
 	@Transactional
 	@Override
@@ -93,7 +97,18 @@ public class SorderServiceImpl implements SorderService{
 	@Override
 	public boolean dealHeXiao(int oid) throws Exception {
 		// TODO Auto-generated method stub
-		return sorderDao.dealHeXiao(oid);
+		Sorder sorder = sorderDao.showSorderById(oid);
+		boolean flag;
+		if(sorder != null) {
+			flag = sorderDao.dealHeXiao(oid);
+			if(flag && sorder.getCid() != 0) {
+				//System.out.println("这是测试核销CID的:");
+				System.out.println(sorder.getCid());
+				return couponDao.deleteCoupon(sorder.getCid());
+			}
+			return flag;
+		} 
+		return false;
 	}
 	
 	@Transactional

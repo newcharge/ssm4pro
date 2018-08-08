@@ -14,13 +14,13 @@ import com.neuedu.service.SorderService;
 import com.neuedu.utils.JsonUtils;
 import com.neuedu.vo.VInputRefund;
 import com.neuedu.vo.VInputSorder;
-
+import com.neuedu.service.*;
 @Controller
 public class SorderHandler {
 	private static final int pageSize = 10;
 	@Autowired
 	SorderService sorderService;
-
+	CouponService coupinservice;
 	@RequestMapping(value = "sorder/showAll.action")
 	@ResponseBody
 	public Sorder fretoend(String jsonData) throws Exception {
@@ -105,6 +105,7 @@ public class SorderHandler {
 	@ResponseBody
 	public boolean dealHeXiao(int id) throws Exception {
 		System.out.println(id);
+		//CouponService couponService=new CouponService();
 		return sorderService.dealHeXiao(id);
 	}
 	
