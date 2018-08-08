@@ -36,7 +36,6 @@ public class FreelistenServiceImplTest
 		
 		freelistenService.addFreelisten(freelisten);
 	}
-	
 	@Ignore
 	@Test
 	public void testEditFreelisten() throws Exception {
@@ -55,7 +54,6 @@ public class FreelistenServiceImplTest
 		
 		freelistenService.editFreelisten(freelisten);
 	}
-
 	@Ignore
 	@Test
 	public void testDeleteFreelisten() throws Exception {
@@ -69,7 +67,6 @@ public class FreelistenServiceImplTest
 		freelistenService.showFreelisten(1).forEach(System.out::println);
 
 	}
-
 	@Ignore
 	@Test
 	public void testShowFreelistenByBranchId() throws Exception {

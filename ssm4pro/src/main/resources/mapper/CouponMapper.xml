@@ -5,13 +5,13 @@
 <mapper namespace="com.neuedu.dao.CouponDao">
 
 	<select id="showAll" resultType="Coupon">
-		select coupon.openid,coupon.cid,coupon.category,coupon.money,coupon.total,coupon.deadline
+		select *
 		from coupon
 		where coupon.qid = #{qid}
 	</select>
 	
 	<select id="showCouponByOthers" resultType="Coupon">
-		select coupon.openid,coupon.cid,coupon.category,coupon.money,coupon.total,coupon.deadline
+		select *
 		from coupon
 		where coupon.qid = #{qid}
 		<if test="cid != null">

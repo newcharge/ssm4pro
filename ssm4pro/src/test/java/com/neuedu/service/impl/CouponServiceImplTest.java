@@ -10,12 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.neuedu.po.Coupon;
 import com.neuedu.service.CouponService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml"})
 public class CouponServiceImplTest {
 
 	@Autowired
 	CouponService couponService;
+
 	@Ignore
 	@Test
 	public void testShowAll() throws Exception{
@@ -52,7 +54,5 @@ public class CouponServiceImplTest {
 		vic.setCid(12);
 		System.out.println(couponService.addCoupon(vic));
 	}
-	
-	
 
 }

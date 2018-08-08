@@ -19,6 +19,8 @@ import com.neuedu.service.MessageService;
 import com.neuedu.vo.VInputMessage;
 import com.neuedu.vo.VOutputMessage;
 
+import redis.clients.jedis.Jedis;
+
 @Service
 public class MessageServiceImpl implements MessageService {
 
@@ -61,7 +63,12 @@ public class MessageServiceImpl implements MessageService {
 					flag = false;
 				}
 			}
-			if(flag) return true;
+			if(flag){
+				Jedis jedis = new Jedis();
+				jedis.flushAll();
+				jedis.close();
+				return true;
+			}
 		}
 		return false;
 	}
@@ -70,6 +77,9 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean addReply(Messagereply reply) throws Exception {
 		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return messagereplyDao.addReply(reply);
 	}
 
@@ -77,6 +87,9 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean addLike(Messagelike like) throws Exception {
 		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return messagelikeDao.addLike(like);
 	}
 
@@ -88,6 +101,9 @@ public class MessageServiceImpl implements MessageService {
 		messageimgDao.deleteImgByMid(id);
 		messagelikeDao.deleteLikeByMid(id);
 		messagereplyDao.deleteReplyByMid(id);
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return messageDao.deleteMessage(id);
 	}
 
@@ -95,6 +111,9 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteReply(int id) throws Exception {
 		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return messagereplyDao.deleteReplyById(id);
 	}
 
@@ -107,6 +126,9 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public boolean deleteLike(Messagelike like) throws Exception {
 		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return messagelikeDao.deleteLike(like);
 	}
 	
@@ -140,7 +162,12 @@ public class MessageServiceImpl implements MessageService {
 			for(Messageimg img : imgList) {
 				messageimgDao.addImg(img);
 			}
-			if(flag) return true;
+			if(flag){
+				Jedis jedis = new Jedis();
+				jedis.flushAll();
+				jedis.close(); 
+				return true;
+			}
 		}
 		return false;
 	}

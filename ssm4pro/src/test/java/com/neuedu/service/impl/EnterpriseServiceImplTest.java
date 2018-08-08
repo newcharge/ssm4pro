@@ -1,5 +1,9 @@
 package com.neuedu.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +19,24 @@ public class EnterpriseServiceImplTest {
 
 	@Autowired
 	EnterpriseService enterpriseService;
-	
+	@Ignore
 	@Test
 	public void testShowEnterprise() throws Exception {
 		System.out.println(enterpriseService.showEnterprise(1));
 	}
-	
+
+	@Ignore
 	@Test
 	public void testeditEnterprise() throws Exception {
 		VInputEnterprise vie=new VInputEnterprise();
-		vie.setQid(2);
-		vie.setVideopath("aaa");
-		vie.setIntroduction("bbb");
-		vie.setJczs("aaa");
+		List<String> imgList = new ArrayList<String>();
+		imgList.add("zzz.jpg");
+		vie.setImgList(imgList);
+		vie.setQid(3);
 		vie.setName("zzz");
+		vie.setVideopath("zzz");
+		vie.setIntroduction("zzz");
+		vie.setJczs("zzz");
 		System.out.println(enterpriseService.editEnterprise(vie));
 	}
 
