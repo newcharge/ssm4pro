@@ -18,10 +18,10 @@ public class RefundServiceImplTest {
 	@Autowired
 	RefundService refundService;
 
-	@Ignore
+	
 	@Test
 	public void testEditRefund() throws Exception {
-		refundService.editRefund(64);
+		System.out.println(refundService.editRefund(12));
 	}
 
 	@Ignore
@@ -29,10 +29,18 @@ public class RefundServiceImplTest {
 	public void testShowRefundByOthers() throws Exception {
 		VInputRefund vir = new VInputRefund();
 		vir.setQid(1);
-		vir.setStatus("待处理");
-		vir.setStarttime("2018-05-26 00:00:01");
-		vir.setEndtime("2018-05-26 23:00:01");
+		vir.setOid(null);
+		vir.setStatus(null);
+		vir.setStarttime(null);
+		vir.setEndtime(null);
 		refundService.showRefundByOthers(vir).forEach(System.out::println);
+		
+	}
+	
+	@Ignore
+	@Test
+	public void showByOid() throws Exception {
+		System.out.println(refundService.showByOid(11));
 		
 	}
 

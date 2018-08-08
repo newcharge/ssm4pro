@@ -10,6 +10,8 @@ import com.neuedu.dao.FreelistenDao;
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
 
+import redis.clients.jedis.Jedis;
+
 @Service
 public class FreelistenServiceImpl implements FreelistenService {
 
@@ -23,7 +25,9 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 		
 		flag = freelistenDao.addFreelisten(freelisten);
-		
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return flag;
 	}
 
@@ -34,7 +38,9 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 		
 		flag = freelistenDao.editFreelisten(freelisten);
-		
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return flag;
 	}
 
@@ -45,6 +51,9 @@ public class FreelistenServiceImpl implements FreelistenService {
 		boolean flag = false;
 
 		flag = freelistenDao.deleteFreelisten(id);
+		Jedis jedis = new Jedis();
+		jedis.flushAll();
+		jedis.close();
 		return flag;
 	}
 

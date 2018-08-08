@@ -33,25 +33,25 @@ public class CouponHandler {
 	@RequestMapping(value = "coupon/showCouponByOthers.action")
 	@ResponseBody
 	public List<Coupon> showCouponByOthers(String jsonData) throws Exception {
-		Coupon vic = JsonUtils.jsonToPojo(jsonData, Coupon.class);
-		return couponService.showCouponByOthers(vic);
+		Coupon coupon = JsonUtils.jsonToPojo(jsonData, Coupon.class);
+		return couponService.showCouponByOthers(coupon);
 	}
 	
 	@RequestMapping(value = "coupon/showCouponByOthersByPage.action")
 	@ResponseBody
 	public PageInfo<Coupon> showCouponByOthersByPage(String jsonData,int pageNum) throws Exception {
-		Coupon vic = JsonUtils.jsonToPojo(jsonData, Coupon.class);
+		Coupon coupon = JsonUtils.jsonToPojo(jsonData, Coupon.class);
 		
-		if(vic.getOpenid()=="")
-			vic.setOpenid(null);;
-		if(vic.getCategory()=="")
-			vic.setCategory(null);
-		System.out.println(vic.getQid());
-		System.out.println(vic.getCid());
-		System.out.println(vic.getOpenid());
-		System.out.println(vic.getCategory());
+		if(coupon.getOpenid()=="")
+			coupon.setOpenid(null);;
+		if(coupon.getCategory()=="")
+			coupon.setCategory(null);
+		System.out.println(coupon.getQid());
+		System.out.println(coupon.getCid());
+		System.out.println(coupon.getOpenid());
+		System.out.println(coupon.getCategory());
 		PageHelper.startPage(pageNum, pageSize);
-		return PageInfo.of(couponService.showCouponByOthers(vic));
+		return PageInfo.of(couponService.showCouponByOthers(coupon));
 	}
 	
 	@RequestMapping(value = "coupon/editCoupon.action")
@@ -86,5 +86,13 @@ public class CouponHandler {
 		System.out.println(vic.getOpenid());
 		
 		return couponService.addCoupon(vic);
+	}
+	
+	@RequestMapping(value = "coupon/showTopCoupon.action")
+	@ResponseBody
+	public List<Coupon> showTopCoupon(String jsonData, int rank) throws Exception {
+		Coupon coupon = JsonUtils.jsonToPojo(jsonData, Coupon.class);
+		
+		return couponService.showTopCoupon(coupon, rank);
 	}
 }

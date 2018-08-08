@@ -14,6 +14,8 @@ import com.neuedu.service.LessonService;
 import com.neuedu.vo.VInputLesson;
 import com.neuedu.vo.VOutputLesson;
 
+import redis.clients.jedis.Jedis;
+
 @Service
 public class LessonServiceImpl implements LessonService {
 
@@ -37,6 +39,9 @@ public class LessonServiceImpl implements LessonService {
 				lessonbranch.setLid(lesson.getLid());
 				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
+			Jedis jedis = new Jedis();
+			jedis.flushAll();
+			jedis.close();
 			return true;
 		}
 		return false;
@@ -69,6 +74,9 @@ public class LessonServiceImpl implements LessonService {
 				lessonbranch.setLid(lesson.getLid());
 				if(lessonbranchDao.insert(lessonbranch) == false) return false;
 			}
+			Jedis jedis = new Jedis();
+			jedis.flushAll();
+			jedis.close();
 			return true;
 		}
 		return false;

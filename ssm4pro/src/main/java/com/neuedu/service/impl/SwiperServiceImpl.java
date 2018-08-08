@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.SwiperDao;
 import com.neuedu.po.Swiper;
 import com.neuedu.service.SwiperService;
-import com.neuedu.utils.JedisAPI;
 
 import redis.clients.jedis.Jedis;
 
@@ -25,7 +24,7 @@ public class SwiperServiceImpl implements SwiperService {
 	@Override
 	public List<String> showSwiperByCategory(Swiper swiper) throws Exception {
 		// TODO Auto-generated method stub
-		Jedis jedis = JedisAPI.getRedisApi().getRedis("59.110.137.171", 6379);
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		String entry = String.join("-", "swiper", String.valueOf(swiper.getQid()), swiper.getCategory());
 		Set<String> result = jedis.smembers(entry);
 		List<String> list;
@@ -40,7 +39,7 @@ public class SwiperServiceImpl implements SwiperService {
 				jedis.expire(entry, 30);
 			});
 		}
-		JedisAPI.getRedisApi().closeRedis(jedis);
+		jedis.close();
 		return list;
 	}
 	

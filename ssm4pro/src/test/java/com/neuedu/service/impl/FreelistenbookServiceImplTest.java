@@ -55,7 +55,7 @@ public class FreelistenbookServiceImplTest {
 		freelistenbookService.showFreelistenbook(1).forEach(System.out::println);
 
 	}
-
+	@Ignore
 	@Test
 	public void testShowFreelistenbookByOthers() throws Exception {
 		VInputFreelistenbook vif = new VInputFreelistenbook();
@@ -63,6 +63,21 @@ public class FreelistenbookServiceImplTest {
 		vif.setId(8);
 		freelistenbookService.showFreelistenbookByOthers(vif).forEach(System.out::println);
 
+
+	}
+	@Ignore
+	@Test
+	public void testshowFreelistenbookByQidUser() throws Exception {
+		VInputFreelistenbook vif = new VInputFreelistenbook();
+		vif.setQid(1);
+		vif.setId(8);
+		freelistenbookService.showFreelistenbookByQidUser(vif).forEach(System.out::println);
+
+	}
+	@Ignore
+	@Test
+	public void testshowFreelistenbookAmount() throws Exception {
+		System.out.println(freelistenbookService.showFreelistenbookAmount(1));
 
 	}
 

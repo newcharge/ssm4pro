@@ -1,5 +1,6 @@
 package com.neuedu.web;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class PointHandler {
 	
 	@RequestMapping(value = "point/showPointByOpenid.action")
 	@ResponseBody
-	public List<Point> showPointByOpenid(String jsonData) throws Exception {
+	public Point showPointByOpenid(String jsonData) throws Exception {
 		Point point = JsonUtils.jsonToPojo(jsonData, Point.class);
 		if(point.getOpenid()=="")
 			point.setOpenid(null);
@@ -47,7 +48,7 @@ public class PointHandler {
 		if(point.getOpenid()=="")
 			point.setOpenid(null);
 		PageHelper.startPage(pageNum, pageSize);
-		return PageInfo.of(pointService.showPointByOpenid(point));
+		return PageInfo.of(Arrays.asList(pointService.showPointByOpenid(point)));
 	}
 	
 	@RequestMapping(value = "point/editPoint.action")
@@ -71,5 +72,23 @@ public class PointHandler {
 		Point point = JsonUtils.jsonToPojo(jsonData, Point.class);
 
 		return pointService.addPoint(point);
+	}
+	
+	@RequestMapping(value = "point/exchange.action")
+	@ResponseBody
+	public boolean exchange(String openid, int qid, int cost, int couponAmount) throws Exception {
+		return pointService.exchange(openid, qid, cost, couponAmount);
+	}
+	
+	@RequestMapping(value = "point/initPoint.action")
+	@ResponseBody
+	public boolean initPoint(String jsonData) throws Exception {
+		Point point = JsonUtils.jsonToPojo(jsonData, Point.class);
+		Point pointbef = pointService.showPointByOpenid(point);
+		if(pointbef == null || pointbef.getId() == 0) {
+			return pointService.addPoint(point);
+		} else {
+			return false;
+		}
 	}
 }
