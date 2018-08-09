@@ -61,6 +61,16 @@ public class SorderServiceImpl implements SorderService{
 	
 	@Transactional
 	@Override
+	public boolean cancel(int oid) throws Exception {
+		// TODO Auto-generated method stub
+		Sorder sorder = new Sorder();
+		sorder.setOid(oid);
+		sorder.setStatus("已取消");
+		return sorderDao.changeSorderState(sorder);
+	}
+	
+	@Transactional
+	@Override
 	public List<Sorder> showSorder(int qid) throws Exception {
 		// TODO Auto-generated method stub
 		return sorderDao.showSorder(qid);
@@ -144,6 +154,4 @@ public class SorderServiceImpl implements SorderService{
 	public double showPayingFee(int qid) throws Exception {
 		return sorderDao.showPayingFee(qid);
 	}
-	
-
 }

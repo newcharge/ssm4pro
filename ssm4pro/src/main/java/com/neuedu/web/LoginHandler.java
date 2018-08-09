@@ -21,6 +21,7 @@ public class LoginHandler {
 			return false;
 		}
 		String code = SmsUtils.getCode(tel);
+		System.out.println(code);
 		jedis.set(entry, code);
 		jedis.expire(entry, 30);
 		jedis.close();

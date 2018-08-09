@@ -141,6 +141,13 @@ public class SorderHandler {
 		System.out.println(vir.getRefundReason());
 		return sorderService.createRefund(vir);
 	}
+	
+	@RequestMapping(value = "order/cancel.action")
+	@ResponseBody
+	public boolean cancel(int oid) throws Exception {
+		return sorderService.cancel(oid);
+	}
+	
 	@RequestMapping(value = "order/showAllByPage.action")
 	@ResponseBody
 	public PageInfo<Sorder> showSorderPageByQid(int qid, int pageNum) throws Exception {
