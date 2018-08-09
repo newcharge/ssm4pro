@@ -60,4 +60,10 @@ public class TeacherHandler {
 	public boolean deleteTeacher(int tid) throws Exception {
 		return teacherService.deleteTeacher(tid);
 	}
+	
+	@RequestMapping(value = "teacher/showTopTeacher.action")
+	@ResponseBody
+	public List<Teacher> showTopTeacher(int qid, int rank) throws Exception {
+		return teacherService.showTopTeacher(qid, rank);
+	}
 }

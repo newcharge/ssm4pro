@@ -1,5 +1,7 @@
 package com.neuedu.service.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,7 @@ import com.neuedu.po.Messagereply;
 import com.neuedu.service.MessageService;
 import com.neuedu.vo.VInputMessage;
 import com.neuedu.vo.VOutputMessage;
+import com.neuedu.web.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
@@ -183,5 +186,37 @@ public class MessageServiceImpl implements MessageService {
 	public List<Messagelike> findAllLikeByMid(int mid) throws Exception {
 		// TODO Auto-generated method stub
 		return messagelikeDao.findAllByMid(mid);
+	}
+
+	@Override
+	public List<VOutputMessage> showTopMsg(int qid, int rank) throws Exception {
+		// TODO Auto-generated method stub
+		Jedis jedis = new Jedis("59.110.137.171", 6379);
+		String entry = String.join("-", Arrays.asList("message", String.valueOf(qid)));
+		long count = jedis.llen(entry);
+		List<VOutputMessage> list;
+		List<String> strList;
+		if(count == 0) {
+			list = messageDao.findAllByQid(qid);
+			for(VOutputMessage vom : list) {
+				jedis.lpush(entry, JsonUtils.ObjectToJson(vom));
+			}
+		}
+		if(rank + 5 - 1 < count) {
+			strList = jedis.lrange(entry, rank, rank + 5 - 1);
+		} else if(rank < count) {
+			strList = jedis.lrange(entry, rank, -1);
+		} else {
+			strList = Arrays.asList();
+		}
+		
+		System.out.println(strList.size());
+		list = new ArrayList<>();
+		for(String couponStr : strList) {
+			list.add(JsonUtils.jsonToPojo(couponStr, VOutputMessage.class));
+		}
+		
+		jedis.close();
+		return list;
 	}
 }

@@ -93,4 +93,10 @@ public class MessageHandler {
 		PageHelper.startPage(pageNum, pageSize);
 		return PageInfo.of(messageService.showMessageByQid(qid));
 	}
+	
+	@RequestMapping(value = "msg/showTopMsg.action")
+	@ResponseBody
+	public List<VOutputMessage> showTopMsg(int qid, int rank) throws Exception {
+		return messageService.showTopMsg(qid, rank);
+	}
 }
