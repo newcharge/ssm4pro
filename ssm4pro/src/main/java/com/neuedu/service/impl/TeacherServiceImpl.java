@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.TeacherDao;
 import com.neuedu.po.Teacher;
 import com.neuedu.service.TeacherService;
-import com.neuedu.web.JsonUtils;
+import com.neuedu.utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 

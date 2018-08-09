@@ -1,7 +1,5 @@
 package com.neuedu.service.impl;
 
-import static org.junit.Assert.assertTrue;
-
 import java.time.LocalDate;
 
 import org.junit.Ignore;

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.FreelistenDao;
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
-import com.neuedu.web.JsonUtils;
+import com.neuedu.utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 

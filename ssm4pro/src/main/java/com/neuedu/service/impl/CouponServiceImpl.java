@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.neuedu.dao.CouponDao;
 import com.neuedu.po.Coupon;
 import com.neuedu.service.CouponService;
-import com.neuedu.web.JsonUtils;
+import com.neuedu.utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
@@ -69,7 +69,7 @@ public class CouponServiceImpl implements CouponService {
 		if(count == 0) {
 			list = couponDao.showCouponByOthers(coupon);
 			for(Coupon couponi : list) {
-				jedis.lpush(entry, JsonUtils.ObjectToJson(couponi));
+				jedis.lpush(entry, com.neuedu.utils.JsonUtils.ObjectToJson(couponi));
 			}
 		}
 		if(rank + 10 - 1 < count) {
