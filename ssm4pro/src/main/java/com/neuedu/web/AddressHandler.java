@@ -35,6 +35,12 @@ public class AddressHandler {
 		return addressService.showAddressById(id);
 	}
 	
+	@RequestMapping(value = "addr/showAddressByLid.action")
+	@ResponseBody
+	public List<Address> showAddressByLid(Integer lid) throws Exception {
+		return addressService.showAddressByLid(lid);
+	}
+	
 	@RequestMapping(value = "addr/editAddress.action")
 	@ResponseBody
 	public boolean editAddress(String jsonData) throws Exception {

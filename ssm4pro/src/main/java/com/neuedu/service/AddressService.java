@@ -10,4 +10,5 @@ public interface AddressService {
 	public boolean editAddress(Address address) throws Exception;
 	public List<Address> showAddress(int qid) throws Exception;
 	public Address showAddressById(int id) throws Exception;
+	public List<Address> showAddressByLid(Integer lid) throws Exception;
 }

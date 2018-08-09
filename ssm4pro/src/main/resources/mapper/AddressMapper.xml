@@ -12,6 +12,14 @@
 		select * from address where id = #{id}
 	</select>
 	
+	<select id="showAddressByLid" resultType="Address">
+		select * from address 
+		where address.id in (
+			select branchid from lessonbranch
+			where lid = #{lid}
+		)
+	</select>
+	
 	<insert id="addAddress" useGeneratedKeys="true" keyProperty="id">
 		insert into address (qid,branch,address,tel,longitude,latitude) value (#{qid},#{branch},#{address},#{tel},#{longitude},#{latitude})
 	</insert>

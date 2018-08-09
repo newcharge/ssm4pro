@@ -44,4 +44,9 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 		return addressDao.showAddress(qid);
 	}
+	
+	@Override
+	public List<Address> showAddressByLid(Integer lid) throws Exception {
+		return addressDao.showAddressByLid(lid);
+	}
 }
