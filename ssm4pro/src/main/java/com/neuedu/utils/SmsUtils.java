@@ -22,7 +22,7 @@ public class SmsUtils {
 		String rod = smsCode();
 		String timestamp = getTimestamp();
 		String sig = getMD5(ACCOUNT_SID, AUTH_TOKEN, timestamp);
-		String tamp = "【圆圆科技】登录验证码：" + rod + "，如非本人操作，请忽略此短信。";
+		String tamp = "【子卓科技】登录验证码：" + rod + "，如非本人操作，请忽略此短信。";
 		OutputStreamWriter out = null;
 		BufferedReader br = null;
 		StringBuilder result = new StringBuilder();
