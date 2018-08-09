@@ -11,6 +11,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
+import com.neuedu.utils.JsonUtils;
 
 @Controller
 public class FreelistenHandler {
@@ -86,7 +87,7 @@ public class FreelistenHandler {
 
 	@RequestMapping(value = "freelisten/showTopFreelisten.action")
 	@ResponseBody
-	public List<Freelisten> showTopLesson(int qid, int rank) throws Exception {
-		return freelistenService.showTopLesson(qid, rank);
+	public List<Freelisten> showTopFreelisten(int qid, int rank) throws Exception {
+		return freelistenService.showTopFreelisten(qid, rank);
 	}
 }

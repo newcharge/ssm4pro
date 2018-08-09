@@ -9,7 +9,5 @@ public interface TeacherService {
 	public boolean deleteTeacher(int tid) throws Exception;
 	public boolean editTeacher(Teacher teacher) throws Exception;
 	public List<Teacher> showTeacher(int qid) throws Exception;
-	
-	
-
+	public List<Teacher> showTopTeacher(int qid, int rank) throws Exception;
 }

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.neuedu.dao.FreelistenDao;
 import com.neuedu.po.Freelisten;
 import com.neuedu.service.FreelistenService;
-import com.neuedu.web.JsonUtils;
+import com.neuedu.utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
@@ -103,7 +103,7 @@ public class FreelistenServiceImpl implements FreelistenService {
 	}
 
 	@Override
-	public List<Freelisten> showTopLesson(int qid, int rank) throws Exception {
+	public List<Freelisten> showTopFreelisten(int qid, int rank) throws Exception {
 		// TODO Auto-generated method stub
 		Jedis jedis = new Jedis("59.110.137.171", 6379);
 		String entry = String.join("-", Arrays.asList("freelisten", String.valueOf(qid)));

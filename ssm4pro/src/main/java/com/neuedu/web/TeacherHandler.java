@@ -11,6 +11,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neuedu.po.Teacher;
 import com.neuedu.service.TeacherService;
+import com.neuedu.utils.JsonUtils;
 
 @Controller
 public class TeacherHandler {
@@ -59,5 +60,11 @@ public class TeacherHandler {
 	@ResponseBody
 	public boolean deleteTeacher(int tid) throws Exception {
 		return teacherService.deleteTeacher(tid);
+	}
+	
+	@RequestMapping(value = "teacher/showTopTeacher.action")
+	@ResponseBody
+	public List<Teacher> showTopTeacher(int qid, int rank) throws Exception {
+		return teacherService.showTopTeacher(qid, rank);
 	}
 }

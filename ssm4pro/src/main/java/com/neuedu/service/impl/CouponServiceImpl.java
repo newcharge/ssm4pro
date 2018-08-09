@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.neuedu.dao.CouponDao;
 import com.neuedu.po.Coupon;
 import com.neuedu.service.CouponService;
-import com.neuedu.web.JsonUtils;
+import com.neuedu.utils.JsonUtils;
 
 import redis.clients.jedis.Jedis;
 
