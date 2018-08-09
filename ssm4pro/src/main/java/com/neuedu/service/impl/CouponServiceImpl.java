@@ -69,7 +69,7 @@ public class CouponServiceImpl implements CouponService {
 		if(count == 0) {
 			list = couponDao.showCouponByOthers(coupon);
 			for(Coupon couponi : list) {
-				jedis.lpush(entry, com.neuedu.utils.JsonUtils.ObjectToJson(couponi));
+				jedis.lpush(entry, JsonUtils.ObjectToJson(couponi));
 			}
 		}
 		if(rank + 10 - 1 < count) {
