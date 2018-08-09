@@ -79,4 +79,7 @@ dependencies {
 	
 	//jedis
 	compile 'redis.clients:jedis:2.9.0'
+	
+	//json
+	compile 'org.json:json:20160810'
 }
